@@ -10,6 +10,7 @@ namespace Text_RPG
     {
         public string ItemName { get; set; }
         public string Description { get; set; }
+        public string Property { get; set; }
         // 아이템의 효과, 타입, 사용 조건 등의 속성
     }
 }
