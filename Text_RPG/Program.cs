@@ -5,6 +5,7 @@
         static void Main(string[] args)
         {
             Console.WriteLine("Hello, World!");
+            Console.Clear();
         }
     }
 }// 이찬영  ㅇㅇ
