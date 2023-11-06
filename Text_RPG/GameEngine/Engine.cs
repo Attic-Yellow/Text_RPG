@@ -20,14 +20,12 @@ namespace Text_RPG.GameEngine
             _inputHandler = new InputHandler();
             _characterUI = new CharacterSelectionUI();
             _userCharacters = new Dictionary<string, string>();
-            // 초기화 코드를 여기에 넣으세요.
         }
 
         // 소멸자
         ~Engine()
         {
-            // 자원 해제 로직을 여기에 넣으세요.
-            // 예: 파일 핸들 닫기, 네트워크 연결 종료 등
+            
         }
 
         public void Init()
