@@ -44,7 +44,8 @@ namespace Text_RPG.UI
 
         public static void DisplayMainMenu(InputHandler inputHandler, CharacterSelectionUI characterUI)
         {
-            while (true)
+            bool conti = true;
+            while (conti)
             {
                 Console.Clear();
                 UIRender.DrawBox(menuBox.Width, menuNumber.Count);
@@ -61,6 +62,7 @@ namespace Text_RPG.UI
                         break;
                     case ConsoleKey.Enter:
                         PerformAction(inputHandler, characterUI, menuBox.SelectedIndex);
+                        conti = false;
                         break;
                 }
             }
