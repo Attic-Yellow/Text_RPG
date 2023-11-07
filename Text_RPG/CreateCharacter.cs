@@ -26,7 +26,7 @@ namespace Text_RPG
                     break;
             }
             _stat = new CharacterStat(_player);
-
+            
         }
     }
 }

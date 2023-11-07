@@ -8,11 +8,15 @@ namespace Text_RPG
 {
     public class CharacterStat
     {
-        Character _character;
+        List<Character> characters;
 
         public CharacterStat(Character character)
         {
-            this._character = character;
+            characters.Add(character);
+        }
+        public List<Character> GetCharacters()
+        {
+            return characters;
         }
     }
 }

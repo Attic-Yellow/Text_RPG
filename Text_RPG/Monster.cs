@@ -9,6 +9,7 @@ namespace Text_RPG
     public class Monster : Entity
     {
         // 추가적인 스탯, 능력치, 드롭 아이템 등의 속성
+        public int Gold { get; set; }
     }
 
 }
