@@ -34,12 +34,12 @@ namespace Text_RPG.UI
     {
         private static readonly List<string> mainPageMenuNumber = new List<string>
         {
-            "탐색 하기",
-            "캐릭터 메뉴", 
-            "상점 구매/판매",
-            "설정",
-            "저장 하기",
-            "종료 하기"
+            " 탐색 하기 ",
+            " 캐릭터 메뉴", 
+            " 상점 이용 ",
+            " 게임 설정 ",
+            " 저장 하기 ",
+            " 종료 하기 "
         };
 
         private static readonly MainPageMenuBox mainPageMenuBox = new MainPageMenuBox(mainPageMenuNumber);
@@ -108,10 +108,7 @@ namespace Text_RPG.UI
                 case 4:
                     Console.Clear();
                     break;
-                case 5:
-                    Console.Clear();
-                    break;
-                case 6: // 종료
+                case 5: // 종료
                     Environment.Exit(0);
                     break;
             }
