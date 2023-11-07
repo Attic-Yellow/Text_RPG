@@ -7,29 +7,6 @@ using Text_RPG.Util;
 
 namespace Text_RPG.UI
 {
-    public class MainPageMenuBox
-    {
-        public List<string> MainPageMenus { get; set; }
-        public int SelectedIndex { get; private set; } = 0;
-        public int Width { get; set; } = 40; 
-        public int Padding { get; set; } = 2; 
-
-        public MainPageMenuBox(List<string> mainPageMenus)
-        {
-            MainPageMenus = mainPageMenus;
-        }
-
-        public void NextMainPageMenu()
-        {
-            SelectedIndex = (SelectedIndex + 1) % MainPageMenus.Count;
-        }
-
-        public void PreviousMainPageMenu()
-        {
-            SelectedIndex = (SelectedIndex - 1 + MainPageMenus.Count) % MainPageMenus.Count;
-        }
-    }
-
     public static class MainPageUI
     {
         private static readonly List<string> mainPageMenuNumber = new List<string>
@@ -42,49 +19,23 @@ namespace Text_RPG.UI
             " 종료 하기 "
         };
 
-        private static readonly MainPageMenuBox mainPageMenuBox = new MainPageMenuBox(mainPageMenuNumber);
+        private static readonly BoxHandler mainPageMenuBoxHandler = new BoxHandler(mainPageMenuNumber);
 
         public static void DisplayMainPageMenu(InputHandler inputHandler, CharacterSelectionUI characterUI)
         {
+            CharacterMenuUI characterMenuUI = new CharacterMenuUI();
+
             while (true)
             {
                 Console.Clear();
-                UIRender.DrawBox(mainPageMenuBox.Width, mainPageMenuNumber.Count);
-                DisplayMainPageMenu();
+                UIRender.DrawBox(mainPageMenuBoxHandler.Box.Width, mainPageMenuBoxHandler.Box.Menus.Count);
+                mainPageMenuBoxHandler.Display();
 
                 var key = inputHandler.GetUserInput();
-                switch (key)
+                mainPageMenuBoxHandler.Navigate(key);
+                if (key == ConsoleKey.Enter)
                 {
-                    case ConsoleKey.UpArrow:
-                        mainPageMenuBox.PreviousMainPageMenu();
-                        break;
-                    case ConsoleKey.DownArrow:
-                        mainPageMenuBox.NextMainPageMenu();
-                        break;
-                    case ConsoleKey.Enter:
-                        MainPagePerformAction(inputHandler, characterUI, mainPageMenuBox.SelectedIndex);
-                        break;
-                }
-            }
-        }
-
-        private static void DisplayMainPageMenu()
-        {
-            int topOffset = (Console.WindowHeight - mainPageMenuNumber.Count) / 2;
-
-            for (int i = 0; i < mainPageMenuNumber.Count; i++)
-            {
-                Console.SetCursorPosition((Console.WindowWidth - mainPageMenuBox.Width) / 2 + 2, topOffset + i + 1);
-
-                if (i == mainPageMenuBox.SelectedIndex)
-                {
-                    Console.ForegroundColor = ConsoleColor.Yellow;
-                    UIRender.DrawCenteredStringInBox($"{mainPageMenuNumber[i]} ◀", mainPageMenuBox.Width);
-                    Console.ResetColor();
-                }
-                else
-                {
-                    UIRender.DrawCenteredStringInBox($"  {mainPageMenuNumber[i]}", mainPageMenuBox.Width);
+                    MainPagePerformAction(inputHandler, characterUI, mainPageMenuBoxHandler.Box.SelectedIndex);
                 }
             }
         }
@@ -98,6 +49,8 @@ namespace Text_RPG.UI
                     break;
                 case 1:
                     Console.Clear();
+                    CharacterMenuUI.DisplayCaharcterMenu(inputHandler, characterUI);
+                    Console.ReadKey(); 
                     break;
                 case 2:
                     Console.Clear();
