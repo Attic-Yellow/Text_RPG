@@ -18,5 +18,6 @@ namespace Text_RPG
             gameEngine.Release();
         }
         int a;
+        int b;
     }
 }
