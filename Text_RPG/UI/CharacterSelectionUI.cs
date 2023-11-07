@@ -52,7 +52,7 @@ namespace Text_RPG.UI
                         Console.Write($"{selectedClass}의 이름: ");
                         string name = Console.ReadLine();
 
-                        string keyToSave = $" ※ {selectedClass}{selectedCharacters.Count + 1}";
+                        string keyToSave = $"{selectedClass}{selectedCharacters.Count + 1}";
                         selectedCharacters[keyToSave] = name;
                         selectedIndex = 0;
                         break;
@@ -98,7 +98,7 @@ namespace Text_RPG.UI
             foreach (var entry in selectedCharacters)
             {
                 Console.SetCursorPosition(0, currentPosY++);
-                Console.WriteLine($"│ {entry.Key} [{entry.Value}]".PadRight(boxWidth - 4) + "│");
+                Console.WriteLine($"│ ※ {entry.Key} [{entry.Value}]".PadRight(boxWidth - 4) + "│");
             }
 
             while (currentPosY < startPosY + boxHeight - 1)
