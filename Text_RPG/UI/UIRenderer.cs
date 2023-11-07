@@ -14,13 +14,44 @@ namespace Text_RPG.UI
             for (int i = 0; i < itemCount + 2; i++)
             {
                 Console.SetCursorPosition((Console.WindowWidth - width) / 2 + 3, (Console.WindowHeight - itemCount) / 2 + i);
-                if (i == 0 || i == itemCount + 1)
+                if (i == 0)
                 {
-                    Console.Write("+" + new string('-', width - 2) + "+");
+                    Console.Write("┌" + new string('─', width - 2) + "┐");
+                }
+                else if (i == itemCount + 1)
+                {
+                    Console.Write("└" + new string('─', width - 2) + "┘");
                 }
                 else
                 {
-                    Console.Write("|" + new string(' ', width - 2) + "|");
+                    Console.Write("│" + new string(' ', width - 2) + "│");
+                }
+            }
+        }
+
+        public static void DrawCharacterMenuBox(int width, int itemCount)
+        {
+            string topLeft = "┌";
+            string topRight = "┐";
+            string bottomLeft = "└";
+            string bottomRight = "┘";
+            char horizontal = '─';
+            string vertical = "│";
+
+            for (int i = 0; i < itemCount + 2; i++)
+            {
+                Console.SetCursorPosition((Console.WindowWidth - width) / 2 + 3, (Console.WindowHeight) - 28 + i);
+                if (i == 0)
+                {
+                    Console.Write(topLeft + new string(horizontal, width - 2) + topRight);
+                }
+                else if (i == itemCount + 1)
+                {
+                    Console.Write(bottomLeft + new string(horizontal, width - 2) + bottomRight);
+                }
+                else
+                {
+                    Console.Write(vertical + new string(' ', width - 2) + vertical);
                 }
             }
         }
@@ -30,6 +61,32 @@ namespace Text_RPG.UI
             int leftOffset = (boxWidth - str.Length) / 2;
             Console.SetCursorPosition((Console.WindowWidth - boxWidth) / 2 + leftOffset, Console.CursorTop + yOffset);
             Console.Write(str);
+        }
+
+        public static void DrawHorizontalLine(int width)
+        {
+            Console.WriteLine($"+{new string('─', width - 2)}+");
+        }
+
+        public static void DrawBoxWithPosition(int x, int y, int width, int height)
+        {
+            for (int i = 0; i < height; i++)
+            {
+                Console.SetCursorPosition(x, y + i);
+
+                if (i == 0)
+                {
+                    Console.Write("┌" + new string('─', width - 2) + "┐");
+                }
+                else if (i == height - 1)
+                {
+                    Console.Write("└" + new string('─', width - 2) + "┘");
+                }
+                else
+                {
+                    Console.Write("│" + new string(' ', width - 2) + "│");
+                }
+            }
         }
     }
 }
