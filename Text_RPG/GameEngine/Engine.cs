@@ -38,6 +38,7 @@ namespace Text_RPG.GameEngine
         {
             StartUI.DisplayMainMenu(_inputHandler, _characterUI);
             _userCharacters = _characterUI.DisplayCharacterSelection(_inputHandler);
+            MainPageUI.DisplayMainPageMenu(_inputHandler, _characterUI);
             Update();
         }
 
