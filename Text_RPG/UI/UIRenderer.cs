@@ -33,25 +33,41 @@ namespace Text_RPG.UI
         {
             string topLeft = "┌";
             string topRight = "┐";
+            string middleLeft = "├";
+            string middleRight = "┤";
             string bottomLeft = "└";
             string bottomRight = "┘";
             char horizontal = '─';
+            string topVertical = "┬";
+            string bottomVertical = "┴";
             string vertical = "│";
 
-            for (int i = 0; i < itemCount + 2; i++)
+            for (int i = 0; i < itemCount - 1; i++)
             {
                 Console.SetCursorPosition((Console.WindowWidth - width) / 2 + 3, (Console.WindowHeight) - 28 + i);
                 if (i == 0)
                 {
                     Console.Write(topLeft + new string(horizontal, width - 2) + topRight);
                 }
-                else if (i == itemCount + 1)
-                {
-                    Console.Write(bottomLeft + new string(horizontal, width - 2) + bottomRight);
-                }
                 else
                 {
                     Console.Write(vertical + new string(' ', width - 2) + vertical);
+                }
+            }
+            for (int i = 0; i < itemCount - 2; i++)
+            {
+                Console.SetCursorPosition((Console.WindowWidth - width) / 2 + 3, (Console.WindowHeight) - 24 + i );
+                if (i == 0)
+                {
+                    Console.Write(middleLeft + new string(horizontal, width / 2 - 3) + topVertical + new string(horizontal, width / 2) + middleRight);
+                }
+                else if (i == itemCount - 3)
+                {
+                    Console.Write(bottomLeft + new string(horizontal, width / 2 - 3) + bottomVertical + new string(horizontal, width / 2) + bottomRight);
+                }
+                else
+                {
+                    Console.Write(vertical + new string(' ', width / 2 - 3) + vertical + new string(' ', width / 2) + vertical);
                 }
             }
         }
