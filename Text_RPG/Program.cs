@@ -17,5 +17,6 @@ namespace Text_RPG
             // 게임 종료 후 자원 해제 
             gameEngine.Release();
         }
+        int a;
     }
 }
