@@ -20,6 +20,7 @@ namespace Text_RPG.UI
             while (selectedCharacters.Count < 3)
             {
                 Console.Clear();
+                DisplaySelectedCharacters();
                 UIRender.DrawBox(boxWidth, availableCharacters.Count);
                 DisplayAvailableCharacters(boxWidth);
 
@@ -45,8 +46,8 @@ namespace Text_RPG.UI
                         UIRender.DrawBox(boxWidth, boxHeight);
 
                         // 캐릭터 이름 입력
-                        int startX = (Console.WindowWidth - boxWidth) / 2 + 5; 
-                        int startY = (Console.WindowHeight - boxHeight) / 2 + 2; 
+                        int startX = (Console.WindowWidth - boxWidth) / 2 + 5;
+                        int startY = (Console.WindowHeight - boxHeight) / 2 + 2;
                         Console.SetCursorPosition(startX, startY);
                         Console.Write($"{selectedClass}의 이름: ");
                         string name = Console.ReadLine();
@@ -78,6 +79,32 @@ namespace Text_RPG.UI
                 {
                     UIRender.DrawCenteredStringInBox($"  {availableCharacters[i]}", boxWidth);
                 }
+            }
+        }
+
+        public void DisplaySelectedCharacters()
+        {
+            int boxWidth = Console.WindowWidth - 2;
+            int boxHeight = Math.Min(4 + selectedCharacters.Count + 1, Console.WindowHeight);
+            int startPosY = Console.WindowHeight - boxHeight - 1;
+
+            UIRender.DrawBoxWithPosition(0, startPosY, boxWidth, boxHeight);
+
+            int currentPosY = startPosY + 1;
+
+            Console.SetCursorPosition(0, currentPosY++);
+            Console.WriteLine($"│ 선택된 직업 :".PadRight(boxWidth - 6) + "│");
+
+            foreach (var entry in selectedCharacters)
+            {
+                Console.SetCursorPosition(0, currentPosY++);
+                Console.WriteLine($"│ {entry.Key} [{entry.Value}]".PadRight(boxWidth - 4) + "│");
+            }
+
+            while (currentPosY < startPosY + boxHeight - 1)
+            {
+                Console.SetCursorPosition(0, currentPosY++);
+                Console.WriteLine("│".PadRight(boxWidth - 1) + "│");
             }
         }
 
