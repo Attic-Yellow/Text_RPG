@@ -6,6 +6,7 @@
         {
             Console.WriteLine("Hello, TRPG!");
             Console.Clear();
+            int a;
         }
     }
 }
