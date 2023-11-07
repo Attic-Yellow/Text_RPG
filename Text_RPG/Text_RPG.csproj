@@ -7,8 +7,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <None Remove="BALANCE기본.txt" />
-  </ItemGroup>
-
 </Project>
