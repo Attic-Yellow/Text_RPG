@@ -11,8 +11,8 @@ namespace Text_RPG
         public string Name { get; set; }
         public int Health { get; set; }
         public int MaxHealth { get; set; }
-        public int Level { get; set; } 
-        public int Magic { get; set; }
+        public int Attack { get; set; }
+        public int Defense { get; set; }
     }
 
 }

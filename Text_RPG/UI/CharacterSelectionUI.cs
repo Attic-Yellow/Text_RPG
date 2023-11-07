@@ -16,6 +16,7 @@ namespace Text_RPG.UI
         public Dictionary<string, string> DisplayCharacterSelection(InputHandler inputHandler)
         {
             int boxWidth = 30;
+            CreateCharacter createCharacter;
 
             while (selectedCharacters.Count < 3)
             {
@@ -50,6 +51,8 @@ namespace Text_RPG.UI
                         Console.SetCursorPosition(startX, startY);
                         Console.Write($"{selectedClass}의 이름: ");
                         string name = Console.ReadLine();
+
+                        createCharacter = new CreateCharacter(name, selectedClass);
 
                         string keyToSave = $" ※ {selectedClass}{selectedCharacters.Count + 1}";
                         selectedCharacters[keyToSave] = name;
