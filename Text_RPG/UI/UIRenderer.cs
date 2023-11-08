@@ -16,15 +16,15 @@ namespace Text_RPG.UI
                 Console.SetCursorPosition((Console.WindowWidth - width) / 2 + 3, (Console.WindowHeight - itemCount) / 2 + i);
                 if (i == 0)
                 {
-                    Console.Write("┌" + new string('─', width - 2) + "┐");
+                    Console.Write($"┌{new string('─', width - 2)}┐");
                 }
                 else if (i == itemCount + 1)
                 {
-                    Console.Write("└" + new string('─', width - 2) + "┘");
+                    Console.Write($"└{new string('─', width - 2)}┘");
                 }
                 else
                 {
-                    Console.Write("│" + new string(' ', width - 2) + "│");
+                    Console.Write($"│{new string(' ', width - 2)}│");
                 }
             }
         }
@@ -33,41 +33,115 @@ namespace Text_RPG.UI
         {
             string topLeft = "┌";
             string topRight = "┐";
-            string middleLeft = "├";
-            string middleRight = "┤";
             string bottomLeft = "└";
             string bottomRight = "┘";
             char horizontal = '─';
-            string topVertical = "┬";
-            string bottomVertical = "┴";
             string vertical = "│";
 
-            for (int i = 0; i < itemCount - 1; i++)
+            for (int i = 0; i < itemCount; i++)
             {
                 Console.SetCursorPosition((Console.WindowWidth - width) / 2 + 3, (Console.WindowHeight) - 28 + i);
                 if (i == 0)
                 {
-                    Console.Write(topLeft + new string(horizontal, width - 2) + topRight);
+                    Console.Write($"{topLeft}{new string(horizontal, width - 2)}{topRight}");
+                }
+                else if (i == itemCount - 1)
+                {
+                    Console.Write($"{bottomLeft}{new string(horizontal, width - 2)}{bottomRight}");
                 }
                 else
                 {
-                    Console.Write(vertical + new string(' ', width - 2) + vertical);
+                    Console.Write($"{vertical}{new string(' ', width - 2)}{vertical}");
                 }
             }
-            for (int i = 0; i < itemCount - 2; i++)
+        }
+
+        public static void DrawCharacterMenuWorkBox(int width, int itemCount)
+        {
+            string middleLeft = "├";
+            string bottomLeft = "└";
+            char horizontal = '─';
+            string vertical = "│";
+
+            for (int i = 0; i < itemCount; i++)
             {
-                Console.SetCursorPosition((Console.WindowWidth - width) / 2 + 3, (Console.WindowHeight) - 24 + i );
+                Console.SetCursorPosition((Console.WindowWidth - width) / 2 + 3, (Console.WindowHeight) - 25 + i);
                 if (i == 0)
                 {
-                    Console.Write(middleLeft + new string(horizontal, width / 2 - 3) + topVertical + new string(horizontal, width / 2) + middleRight);
+                    Console.Write($"{middleLeft}{new string(horizontal, width / 2 - 3)}{middleLeft}{new string(horizontal, width / 2)}{middleLeft}  ");
                 }
-                else if (i == itemCount - 3)
+                else if (i == itemCount - 1)
                 {
-                    Console.Write(bottomLeft + new string(horizontal, width / 2 - 3) + bottomVertical + new string(horizontal, width / 2) + bottomRight);
+                    Console.Write($"{bottomLeft}{new string(horizontal, width / 2 - 3)}{bottomLeft}{new string(horizontal, width / 2)}{bottomLeft}  ");
                 }
                 else
                 {
-                    Console.Write(vertical + new string(' ', width / 2 - 3) + vertical + new string(' ', width / 2) + vertical);
+                    Console.Write($"{vertical}{new string(' ', width / 2 - 3)}{vertical}{new string(' ', width / 2)}{vertical}  ");
+                }
+            }
+            for (int i = 0; i < itemCount + 15; i++)
+            {
+                Console.SetCursorPosition((Console.WindowWidth - width) / 2 + 3, (Console.WindowHeight) - 23 + i);
+                if (i == 0)
+                {
+                    Console.Write($"{middleLeft}{new string(horizontal, width / 2 - 3)}{middleLeft}{new string(horizontal, width / 2)}{middleLeft}  ");
+                }
+                else if (i == itemCount + 4)
+                {
+                    Console.Write($"{vertical}{new string(' ', width / 2 - 3)}{vertical}{new string(horizontal, width / 2)}{vertical}  ");
+                }
+                else if (i == itemCount + 14)
+                {
+                    Console.Write($"{bottomLeft}{new string(horizontal, width / 2 - 3)}{bottomLeft}{new string(horizontal, width / 2)}{bottomLeft}  ");
+                }
+                else
+                {
+                    Console.Write($"{vertical}{new string(' ', width / 2 - 3)}{vertical}{new string(' ', width / 2)}{vertical}  ");
+                }
+            }
+        }
+
+        public static void DrawInventoryMenuWorkBox(int width, int itemCount)
+        {
+            string middleLeft = "├";
+            string bottomLeft = "└";
+            char horizontal = '─';
+            string vertical = "│";
+
+            for (int i = 0; i < itemCount; i++)
+            {
+                Console.SetCursorPosition((Console.WindowWidth - width) / 2 + 3, (Console.WindowHeight) - 25 + i);
+                if (i == 0)
+                {
+                    Console.Write($"{middleLeft}{new string(horizontal, width / 2 - 3)}{middleLeft}{new string(horizontal, width / 2)}{middleLeft}  ");
+                }
+                else if (i == itemCount - 1)
+                {
+                    Console.Write($"{bottomLeft}{new string(horizontal, width / 2 - 3)}{bottomLeft}{new string(horizontal, width / 2)}{bottomLeft}  ");
+                }
+                else
+                {
+                    Console.Write($"{vertical}{new string(' ', width / 2 - 3)}{vertical}{new string(' ', width / 2)}{vertical}  ");
+                }
+            }
+            for (int i = 0; i < itemCount + 15; i++)
+            {
+                Console.SetCursorPosition((Console.WindowWidth - width) / 2 + 3, (Console.WindowHeight) - 23 + i);
+                if (i == 0)
+                {
+                    Console.Write($"{middleLeft}{new string(horizontal, width / 2 - 3)}{middleLeft}{new string(horizontal, width / 2)}{middleLeft}  ");
+                }
+                else if (i == itemCount + 4)
+                {
+                    Console.Write($"{vertical}{new string(' ', width / 2 - 3)}{vertical}{new string(' ', width / 2)}{vertical}  ");
+                }
+                else if (i == itemCount + 14)
+                {
+                    Console.Write($"{bottomLeft}{new string(horizontal, width / 2 - 3)}{bottomLeft}{new string(horizontal, width / 2)}{bottomLeft}  ");
+                }
+                else
+                {
+                    Console.Write($"{vertical}{new string(' ', width / 2 - 3)}{vertical}{new string(' ', width / 2)}{vertical}  ");
                 }
             }
         }
@@ -92,15 +166,15 @@ namespace Text_RPG.UI
 
                 if (i == 0)
                 {
-                    Console.Write("┌" + new string('─', width - 2) + "┐");
+                    Console.Write($"┌{ new string('─', width - 2)}┐");
                 }
                 else if (i == height - 1)
                 {
-                    Console.Write("└" + new string('─', width - 2) + "┘");
+                    Console.Write($"└{new string('─', width - 2)}┘");
                 }
                 else
                 {
-                    Console.Write("│" + new string(' ', width - 2) + "│");
+                    Console.Write($"│{new string(' ', width - 2)}│");
                 }
             }
         }
