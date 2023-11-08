@@ -10,8 +10,8 @@ namespace Text_RPG.UI
     {
         public List<string> Menus { get; set; }
         public int SelectedIndex { get; private set; } = 0;
-        public int Width { get; set; } = 40; // 기본 너비 설정
-        public int Padding { get; set; } = 2; // 내부 패딩 설정
+        public int Width { get; set; } = 40; 
+        public int Padding { get; set; } = 2;
 
         public Box(List<string> menus)
         {
