@@ -108,6 +108,10 @@ namespace Text_RPG.UI
             }
         }
 
+        public Dictionary<string, string> GetSelectedCharacters()
+        {
+            return new Dictionary<string, string>(selectedCharacters);
+        }
     }
 }
 
