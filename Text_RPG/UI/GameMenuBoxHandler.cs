@@ -13,12 +13,23 @@ namespace Text_RPG.UI
         {
             public List<string> GameMenus { get; set; }
             public int SelectedIndex { get; private set; } = 0;
+            public int NowIndex { get; set; } = 0;
             public int Width { get; set; } = 110;
             public int Padding { get; set; } = 4;
 
             public GameMenuBox(List<string> gamemenus)
             {
                 GameMenus = gamemenus;
+            }
+
+            public void NextIndex()
+            {
+                NowIndex++;
+            }
+
+            public void PreviousIndex()
+            {
+                NowIndex--;
             }
 
             public void NextItem()
@@ -73,8 +84,8 @@ namespace Text_RPG.UI
             public void GameMenuSecondDisplay()
             {
                 int topOffset = (Console.WindowHeight - Box.GameMenus.Count) / 2 - 8;
-                int leftOffset = (Console.WindowWidth - Box.Width) / 2 + (15 - Box.GameMenus.Count);
-                int spaceBetween = (Box.Width / 2) - 35;
+                int leftOffset = (Console.WindowWidth - Box.Width) / 2 + (15 - 3);
+                int spaceBetween = (Box.Width / 2) - 40;
 
                 Console.SetCursorPosition(leftOffset, topOffset);
 
@@ -99,7 +110,36 @@ namespace Text_RPG.UI
                 }
             }
 
-            public void GameMenuThirdDisplay(InputHandler inputHandler, CharacterSelectionUI characterUI)
+            public void GameMenuSecondOnlyPlayerDisplay()
+            {
+                int topOffset = (Console.WindowHeight - Box.GameMenus.Count) / 2 - 7;
+                int leftOffset = (Console.WindowWidth - 97) / 2;
+                int spaceBetween = (Box.Width / 2) - 40;
+
+                Console.SetCursorPosition(leftOffset, topOffset);
+
+                for (int i = 0; i < Box.GameMenus.Count; i++)
+                {
+
+                    if (i == Box.SelectedIndex)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.Write(Box.GameMenus[i] + " ◀");
+                        Console.ResetColor();
+                    }
+                    else
+                    {
+                        Console.Write(Box.GameMenus[i]);
+                    }
+
+                    if (i < Box.GameMenus.Count - 1)
+                    {
+                        Console.Write(new string(' ', spaceBetween));
+                    }
+                }
+            }
+
+            public void GameMenuThirdDisplay()
             {
                 int topOffset = (Console.WindowHeight - Box.GameMenus.Count) / 2 - 8;
                 int leftOffset = (Console.WindowWidth - Box.Width) / 2 + (65 - Box.GameMenus.Count);
@@ -128,7 +168,7 @@ namespace Text_RPG.UI
                 }
             }
 
-            public void GameMenuFourthdDisplay(InputHandler inputHandler, CharacterSelectionUI characterUI)
+            public void GameMenuFourthDisplay()
             {
                 int topOffset = (Console.WindowHeight - Box.GameMenus.Count) / 2 - 2;
                 int leftOffset = (Console.WindowWidth - Box.Width) / 2 + (15 - Box.GameMenus.Count);
@@ -155,55 +195,47 @@ namespace Text_RPG.UI
                 }
             }
 
-            public void GameMenuTestDisplay(InputHandler inputHandler, CharacterSelectionUI characterUI, int selectedIndex)
+            public void GameMenuFourthOnlyPlayerDisplay()
             {
                 int topOffset = (Console.WindowHeight - Box.GameMenus.Count) / 2 - 5;
-                int leftOffset = (Console.WindowWidth - Box.Width) / 2 + 8;
-                int spaceBetween = (Box.Width / 2);
+                int leftOffset = (Console.WindowWidth - 90) / 2;
 
                 Console.SetCursorPosition(leftOffset, topOffset);
-
-                var selectedCharacters = characterUI.DisplayCharacterSelection(inputHandler);
-                int nameWidth = selectedCharacters.Max(sc => sc.Key.Length) + 4;
-
-                for (int i = 0; i < selectedCharacters.Count; i++)
+                if (Box.GameMenus.Count > 0)
                 {
-                    var character = selectedCharacters.ElementAt(i);
-                    var key = character.Key.PadRight(nameWidth);
-                    var value = character.Value;
-
-                    if (i == selectedIndex)
+                    if (Box.NowIndex > 2)
                     {
-                        Console.ForegroundColor = ConsoleColor.Blue;
-                        Console.Write($"{key}◀");
-                        Console.ResetColor();
+                        Box.NowIndex = 0;
                     }
-                    else
+                    if (Box.NowIndex < 0)
                     {
-                        Console.Write($"{key}");
+                        Box.NowIndex = 2;
                     }
 
-                    if (i < selectedCharacters.Count - 1)
-                    {
-                        Console.Write(new string(' ', nameWidth));
-                    }
+                    Console.Write($"이름 : {Box.GameMenus[Box.NowIndex]}");
+                    Console.ResetColor();
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
             }
+
             public void Navigate(ConsoleKey key)
             {
                 switch (key)
                 {
                     case ConsoleKey.LeftArrow:
+                        Box.PreviousIndex();
                         Box.PreviousItem();
                         break;
                     case ConsoleKey.RightArrow:
+                        Box.NextIndex();
                         Box.NextItem();
                         break;
                     case ConsoleKey.UpArrow:
+                        Box.PreviousIndex();
                         Box.PreviousItem();
                         break;
                     case ConsoleKey.DownArrow:
+                        Box.NextIndex();
                         Box.NextItem();
                         break;
                 }
