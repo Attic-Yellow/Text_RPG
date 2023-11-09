@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Text_RPG.UI.GameMenuUI;
+using Text_RPG.UI.PlayerMenuUI;
 using Text_RPG.Util;
 
 namespace Text_RPG.UI
@@ -24,7 +24,7 @@ namespace Text_RPG.UI
 
         public static void DisplayMainPageMenu(InputHandler inputHandler, CharacterSelectionUI characterUI)
         {
-            CharacterMenuUI characterMenuUI = new CharacterMenuUI();
+            PlayerMenuSelectionUI characterMenuUI = new PlayerMenuSelectionUI();
 
             while (true)
             {
@@ -50,7 +50,7 @@ namespace Text_RPG.UI
                     break;
                 case 1:
                     Console.Clear();
-                    CharacterMenuUI.DisplayCaharcterMenu(inputHandler, characterUI);
+                    PlayerMenuSelectionUI.DisplayCaharcterMenu(inputHandler, characterUI);
                     Console.ReadKey(); 
                     break;
                 case 2:
