@@ -10,10 +10,10 @@ namespace Text_RPG.Items.Equipments.Protectives
     {
         public Hat()
         {
-            m_protectiveType = ProtectiveType.Hat;
+            protectiveType = ProtectiveTypes.Hat;
 
         }
-        protected int m_defensivePower;
+        protected int defensivePower;
 
     }
 }

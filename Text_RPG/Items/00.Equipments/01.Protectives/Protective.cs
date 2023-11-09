@@ -9,13 +9,13 @@ namespace Text_RPG.Items.Equipments.Protectives
 {
     internal class Protective : Equipment
     {
-        public enum ProtectiveType { None, Hat, Armor, Shoes }
+        public enum ProtectiveTypes {Hat, Armor, Shoes,End }
         public Protective()
         {
-            m_equipType = EquipmentType.Protective;
+           equipType = EquipmentTypes.Protective;
         }
 
-        protected ProtectiveType m_protectiveType;
-        protected int m_defensivePower;
+        protected ProtectiveTypes protectiveType;
+        protected int defensivePower;
     }
 }

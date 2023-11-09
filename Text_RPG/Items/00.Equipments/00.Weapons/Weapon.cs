@@ -11,7 +11,7 @@ namespace Text_RPG.Items.Equipments.Weapons
     {
         public Weapon()
         {
-            m_equipType = EquipmentType.Weapon;
+            equipType = EquipmentTypes.Weapon;
         }
 
 

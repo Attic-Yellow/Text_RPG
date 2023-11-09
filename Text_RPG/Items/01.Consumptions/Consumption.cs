@@ -8,16 +8,23 @@ namespace Text_RPG.Items.Consumptions
 {
     internal abstract class Consumption : Item
     {
-        public enum ConsumptionType { None, HelthItem, BuffItem }
-
+        protected ConsumptionTypes consumptionType;
+        protected int itemCount;
+       
         public Consumption()
         {
-            m_itemType = ItemType.Consumption;
+            itemType = ItemTypes.Consumption;
+            itemCount = 1;
         }
+        public enum ConsumptionTypes { None, HelthItem, BuffItem }
+        public int ItemCount { get { return itemCount; } set {itemCount = value; } }
+        public ConsumptionTypes ConsumptionType { get { return consumptionType; } }
+    
+
         public abstract void UseItem();
 
 
-        protected ConsumptionType m_consumptionType;
+
 
     }
 }
