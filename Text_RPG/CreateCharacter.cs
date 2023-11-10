@@ -9,7 +9,7 @@ namespace Text_RPG
     public class CreateCharacter
     {
         Character _player;
-        CharacterStat _stat;
+        CharacterStat _stat = new CharacterStat();
 
         public CreateCharacter(string name, string selectedClass)
         {
@@ -25,7 +25,7 @@ namespace Text_RPG
                     _player = new Archer(name);
                     break;
             }
-            _stat = new CharacterStat(_player);
+            _stat.AddCharacter(_player);
             
         }
     }

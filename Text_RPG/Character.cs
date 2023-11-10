@@ -24,10 +24,14 @@ namespace Text_RPG
                     _stat.Defense += 15;
                     break;
                 case "마법사":
-
+                    _stat.Health += 40 * Level + 330;
+                    _stat.Attack += 3 * Level + 12;
+                    _stat.Defense += 15;
                     break;
                 case "궁수":
-
+                    _stat.Health += 40 * Level + 330;
+                    _stat.Attack += 3 * Level + 12;
+                    _stat.Defense += 15;
                     break;
             }
         }
@@ -69,7 +73,15 @@ namespace Text_RPG
     {
         public Mage(string name)
         {
-            
+            _stat.Name = name;
+            _stat.Health = 500;
+            _stat.MaxHealth = 500;
+            _stat.Attack = 50;
+            _stat.Defense = 30;
+            _stat.Exp = 0;
+            Level = 1;
+            Class = "마법사";
+            MaxExp = 10;
             // ... 다른 속성 초기화
         }
     }
@@ -78,7 +90,15 @@ namespace Text_RPG
     {
         public Archer(string name)
         {
-            
+            _stat.Name = name;
+            _stat.Health = 500;
+            _stat.MaxHealth = 500;
+            _stat.Attack = 70;
+            _stat.Defense = 30;
+            _stat.Exp = 0;
+            Level = 1;
+            Class = "마법사";
+            MaxExp = 10;
             // ... 다른 속성 초기화
         }
     }

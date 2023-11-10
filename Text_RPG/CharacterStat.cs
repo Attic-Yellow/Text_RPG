@@ -9,10 +9,13 @@ namespace Text_RPG
     public class CharacterStat
     {
         List<Character> characters;
-
-        public CharacterStat(Character character)
+        public CharacterStat()
         {
-            characters.Add(character);
+
+        }
+        public void AddCharacter(Character character)
+        {
+            charcters.Add(character);
         }
         public List<Character> GetCharacters()
         {
