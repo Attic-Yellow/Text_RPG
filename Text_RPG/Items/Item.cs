@@ -8,19 +8,20 @@ namespace Text_RPG.Items
 {
     public class Item
     {
-        public enum ItemType { None, Equipment, Consumption }
-          
-        public string ItemName { get { return m_itemName; } }
-        public string Description { get { return m_description; } }
+
+        protected string itemName;
+        protected string description;
+        protected ItemTypes itemType;
+        public enum ItemTypes { Equipment, Consumption, End }
+
+        public string ItemName { get { return itemName; } }
+        public ItemTypes ItemType {  get { return itemType; } }
+        public string Description { get { return description; } }
 
 
         // 아이템의 효과, 타입, 사용 조건 등의 속성
 
 
-
-        protected string m_itemName;
-        protected string m_description;
-        protected ItemType m_itemType;
 
     }
 }

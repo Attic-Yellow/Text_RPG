@@ -8,14 +8,14 @@ namespace Text_RPG.Items.Equipments
 {
     internal class Equipment : Item
     {
-        public enum EquipmentType { None, Weapon, Protective }
+        public enum EquipmentTypes { Weapon, Protective,End}
         public Equipment()
         {
-            m_itemType = ItemType.Equipment;
+            itemType = ItemTypes.Equipment;
         }
 
 
-        protected EquipmentType m_equipType;
+        protected EquipmentTypes equipType;
 
 
 

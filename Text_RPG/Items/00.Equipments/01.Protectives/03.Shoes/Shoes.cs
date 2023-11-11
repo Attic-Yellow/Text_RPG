@@ -10,7 +10,7 @@ namespace Text_RPG.Items.Equipments.Protectives
     {
         public Shoes()
         {
-            m_protectiveType = ProtectiveType.Shoes;
+            protectiveType = ProtectiveTypes.Shoes;
         }
     }
 }

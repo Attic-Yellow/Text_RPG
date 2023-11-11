@@ -10,7 +10,7 @@ namespace Text_RPG.Items.Equipments.Protectives
     {
         public Armor()
         {
-            m_protectiveType = ProtectiveType.Armor;
+            protectiveType = ProtectiveTypes.Armor;
         }
 
 
