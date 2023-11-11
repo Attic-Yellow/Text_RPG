@@ -38,14 +38,16 @@ namespace Text_RPG.GameEngine
         {
             StartUI.DisplayMainMenu(_inputHandler, _characterUI);
             _userCharacters = _characterUI.DisplayCharacterSelection(_inputHandler);
-            MainPageUI.DisplayMainPageMenu(_inputHandler, _characterUI);
+           
             Update();
         }
 
         private void Update()
         {
-            while (true)
+            bool running = true;
+            while (running)
             {
+                MainPageUI.DisplayMainPageMenu(_inputHandler, _characterUI);
                 ConsoleKey userInput = _inputHandler.GetUserInput();
                 _inputHandler.ProcessInput(userInput);
             }

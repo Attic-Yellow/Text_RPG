@@ -7,31 +7,9 @@ using Text_RPG.Util;
 
 namespace Text_RPG.UI
 {
-    public class MenuBox
-    {
-        public List<string> Menus { get; set; }
-        public int SelectedIndex { get; private set; } = 0;
-        public int Width { get; set; } = 40; // 기본 너비 설정
-        public int Padding { get; set; } = 2; // 내부 패딩 설정
-
-        public MenuBox(List<string> menus)
-        {
-            Menus = menus;
-        }
-
-        public void NextItem()
-        {
-            SelectedIndex = (SelectedIndex + 1) % Menus.Count;
-        }
-
-        public void PreviousItem()
-        {
-            SelectedIndex = (SelectedIndex - 1 + Menus.Count) % Menus.Count;
-        }
-    }
-
     public static class StartUI
     {
+
         private static readonly List<string> menuNumber = new List<string>
         {
             "처음부터", // 게임 시작
@@ -40,7 +18,7 @@ namespace Text_RPG.UI
             "종료" // 게임 종료
         };
 
-        private static readonly MenuBox menuBox = new MenuBox(menuNumber);
+        private static readonly BoxHandler menuBoxHandler = new BoxHandler(menuNumber);
 
         public static void DisplayMainMenu(InputHandler inputHandler, CharacterSelectionUI characterUI)
         {
@@ -48,43 +26,15 @@ namespace Text_RPG.UI
             while (conti)
             {
                 Console.Clear();
-                UIRender.DrawBox(menuBox.Width, menuNumber.Count);
-                DisplayMenu();
+                UIRender.DrawBox(menuBoxHandler.Box.Width, menuBoxHandler.Box.Menus.Count);
+                menuBoxHandler.Display();
 
                 var key = inputHandler.GetUserInput();
-                switch (key)
+                menuBoxHandler.Navigate(key);
+                if (key == ConsoleKey.Enter)
                 {
-                    case ConsoleKey.UpArrow:
-                        menuBox.PreviousItem();
-                        break;
-                    case ConsoleKey.DownArrow:
-                        menuBox.NextItem();
-                        break;
-                    case ConsoleKey.Enter:
-                        PerformAction(inputHandler, characterUI, menuBox.SelectedIndex);
-                        conti = false;
-                        break;
-                }
-            }
-        }
-
-        private static void DisplayMenu()
-        {
-            int topOffset = (Console.WindowHeight - menuNumber.Count) / 2;
-
-            for (int i = 0; i < menuNumber.Count; i++)
-            {
-                Console.SetCursorPosition((Console.WindowWidth - menuBox.Width) / 2 + 2, topOffset + i + 1);
-
-                if (i == menuBox.SelectedIndex)
-                {
-                    Console.ForegroundColor = ConsoleColor.Yellow;
-                    UIRender.DrawCenteredStringInBox($"{menuNumber[i]} ◀", menuBox.Width);
-                    Console.ResetColor();
-                }
-                else
-                {
-                    UIRender.DrawCenteredStringInBox($"  {menuNumber[i]}", menuBox.Width);
+                    PerformAction(inputHandler, characterUI, menuBoxHandler.Box.SelectedIndex);
+                    conti = false;
                 }
             }
         }

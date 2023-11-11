@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace Text_RPG
+namespace Text_RPG.Entity
 {
     public class Character : Entity
     {
@@ -19,8 +19,8 @@ namespace Text_RPG
     {
         public Warrior()
         {
-            this.Health = 100;
-            this.Attack = 15;
+            Health = 100;
+            Attack = 15;
             // ... 다른 속성 초기화
         }
     }
@@ -29,9 +29,9 @@ namespace Text_RPG
     {
         public Mage()
         {
-            this.Health = 80;
-            this.Attack = 10;
-            this.Magic = 20;
+            Health = 80;
+            Attack = 10;
+            Magic = 20;
             // ... 다른 속성 초기화
         }
     }
@@ -40,8 +40,8 @@ namespace Text_RPG
     {
         public Archer()
         {
-            this.Health = 90;
-            this.Attack = 12;
+            Health = 90;
+            Attack = 12;
             // ... 다른 속성 초기화
         }
     }
