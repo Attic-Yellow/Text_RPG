@@ -16,11 +16,12 @@ namespace Text_RPG.Items.Consumptions
             itemType = ItemTypes.Consumption;
             itemCount = 1;
         }
-        public enum ConsumptionTypes { None, HelthItem, BuffItem }
+        public enum ConsumptionTypes { HelthItem, BuffItem,End }
         public int ItemCount { get { return itemCount; } set {itemCount = value; } }
         public ConsumptionTypes ConsumptionType { get { return consumptionType; } }
-    
 
+
+        public abstract void SettingItem();
         public abstract void UseItem();
 
 

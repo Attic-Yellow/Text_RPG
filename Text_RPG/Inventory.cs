@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Text_RPG.Items;
@@ -12,9 +13,11 @@ namespace Text_RPG
     internal class Inventory
     {
         private List<List<Item>> inventorys;
-        private int maxSlot;                
+        private int maxSlot;
+        private int gold;
         public Inventory()
         {
+            gold = 0;
             maxSlot = 30;
             inventorys = new List<List<Item>>();
             inventorys.Capacity = (int)Item.ItemTypes.End;
@@ -23,47 +26,59 @@ namespace Text_RPG
 
             for (int i = 0; i < inventorys.Count; i++)
                 inventorys[i].Capacity = maxSlot;
-
-          
+                      
         }
-        public void AddItem(Item item)
-        {   
-            //인벤토리에 아이템 추가
-            if (item is Consumption)
-            {
-                Item consumption = FindPortion(item);
-                if (consumption != null)
-                {
-                    ((Consumption)consumption).ItemCount++;
-                    item = null;
-                    return;
-                }
-            }
-            inventorys[(int)item.ItemType].Add(item);
-            return;
-        }
-        public Item FindPortion(Item item)
+        public int Gold { get { return gold; } set { gold = value; } }
+        public List<Item> GetInventoryItems(Item.ItemTypes type)
         {
-            //인벤토리에 아이템이 존재하는지 확인
-            if (item.ItemType == Item.ItemTypes.Consumption)
-            {
-                var itemTemp = inventorys[(int)Item.ItemTypes.Consumption];
+            return inventorys[(int)type];
+        }
 
-                for (int i = 0; i < itemTemp.Count; i++)
+        private void RemoveItem(Item.ItemTypes type,int index)
+        {
+            if (index < 0 || index >= inventorys[(int)type].Count)
+                return;
+
+            inventorys[(int)type].RemoveAt(index);
+        }
+
+        public void AddItem(Item item)
+        {
+            if (item == null)
+                return;
+
+            if(item is Equipment)
+            {
+                inventorys[(int)Item.ItemTypes.Equipment].Add(item);
+            }
+            else
+            {
+                foreach(Item itemTemp in inventorys[(int)(Item.ItemTypes.Consumption)])
                 {
-                    if (item.ItemName == itemTemp[i].ItemName)
+                    if(itemTemp.ItemName == item.ItemName)
                     {
-                        return itemTemp[i];
+                        ((Consumption)itemTemp).ItemCount += ((Consumption)itemTemp).ItemCount;
+                        return;
                     }
                 }
-            }
-            return null;
+                inventorys[(int)Item.ItemTypes.Consumption].Add(item);
+            }              
         }
-        public List<Item> GetInventory(Item.ItemTypes type)
+        public void SellItem(Item.ItemTypes type,int index)
         {
-            //장비 리스트 소비리스트 선택해서 리스트 반환
-            return inventorys[(int)type];           
+            if(type == Item.ItemTypes.Equipment)
+            {
+                gold += inventorys[(int)type][index].SellGold;
+            }
+            else
+            {
+                gold += (inventorys[(int)type][index].SellGold * ((Consumption)inventorys[(int)type][index]).ItemCount);
+            }
+
+            RemoveItem(type, index);
         }
+
+    
 
     }
 }

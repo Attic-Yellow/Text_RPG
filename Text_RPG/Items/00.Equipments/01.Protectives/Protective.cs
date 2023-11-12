@@ -7,7 +7,7 @@ using Text_RPG.Items.Equipments;
 
 namespace Text_RPG.Items.Equipments.Protectives
 {
-    internal class Protective : Equipment
+    internal abstract class Protective : Equipment
     {
         public enum ProtectiveTypes {Hat, Armor, Shoes,End }
         public Protective()
@@ -16,6 +16,6 @@ namespace Text_RPG.Items.Equipments.Protectives
         }
 
         protected ProtectiveTypes protectiveType;
-        protected int defensivePower;
+    
     }
 }
