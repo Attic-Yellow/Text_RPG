@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
+using Text_RPG.GameEngine;
 using Text_RPG.Util;
 
 namespace Text_RPG.UI
@@ -20,7 +22,7 @@ namespace Text_RPG.UI
 
         private static readonly BoxHandler menuBoxHandler = new BoxHandler(menuNumber);
 
-        public static void DisplayMainMenu(InputHandler inputHandler, CharacterSelectionUI characterUI)
+        public static void DisplayMainMenu(InputHandler inputHandler, CharacterSelectionUI characterUI, Engine engine)
         {
             bool conti = true;
             while (conti)
@@ -33,13 +35,13 @@ namespace Text_RPG.UI
                 menuBoxHandler.Navigate(key);
                 if (key == ConsoleKey.Enter)
                 {
-                    PerformAction(inputHandler, characterUI, menuBoxHandler.Box.SelectedIndex);
+                    PerformAction(inputHandler, characterUI, menuBoxHandler.Box.SelectedIndex, engine);
                     conti = false;
                 }
             }
         }
 
-        private static void PerformAction(InputHandler inputHandler, CharacterSelectionUI characterUI, int selectedIndex)
+        private static void PerformAction(InputHandler inputHandler, CharacterSelectionUI characterUI, int selectedIndex, Engine engine)
         {
             switch (selectedIndex)
             {
@@ -50,7 +52,7 @@ namespace Text_RPG.UI
                     // 이후 게임 시작 로직을 여기에 추가합니다.
                     break;
                 case 1: // 이어 하기
-                        // 이어하기 로직을 구현하세요.
+                    engine.LoadCharacterData();
                     break;
                 case 2: // 설정
                         // 설정 메뉴 로직을 구현하세요.

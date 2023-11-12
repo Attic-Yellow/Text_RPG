@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using static Text_RPG.UI.GameMenuBoxHandler;
 using Text_RPG.UI.PlayerMenuUI.InventoryUI;
 using Text_RPG.Util;
+using Text_RPG.GameEngine;
+
 
 namespace Text_RPG.UI.PlayerMenuUI.CharacterMenuUI
 {
@@ -23,7 +25,7 @@ namespace Text_RPG.UI.PlayerMenuUI.CharacterMenuUI
 
         }
 
-        public void PlayerMenuDisplay(InputHandler inputHandler, CharacterSelectionUI characterUI)
+        public void PlayerMenuDisplay(InputHandler inputHandler, CharacterSelectionUI characterUI, Engine engine)
         {
             bool conti = true;
             while (conti)
@@ -41,24 +43,24 @@ namespace Text_RPG.UI.PlayerMenuUI.CharacterMenuUI
 
                 if (key == ConsoleKey.Enter)
                 {
-                    PlayerMenuPerformAction(inputHandler, characterUI, PlayerMenuBoxHandler.Box.SelectedIndex);
+                    PlayerMenuPerformAction(inputHandler, characterUI, PlayerMenuBoxHandler.Box.SelectedIndex, engine);
                     conti = false;
                 }
                 else if (key == ConsoleKey.V)
                 {
-                    DisplayCaharcterMenu(inputHandler, characterUI);
+                    DisplayCaharcterMenu(inputHandler, characterUI, engine);
                     conti = false;
                 }
             }
         }
 
-        protected static void PlayerMenuPerformAction(InputHandler inputHandler, CharacterSelectionUI characterUI, int selectedIndex)
+        protected static void PlayerMenuPerformAction(InputHandler inputHandler, CharacterSelectionUI characterUI, int selectedIndex, Engine engine)
         {
             switch (selectedIndex)
             {
                 case 0:
                     PlayerWorkSelectionUI playerWorkSelectionUI = new PlayerWorkSelectionUI(characterUI);
-                    playerWorkSelectionUI.PlayerWorkSelectionDisplay(inputHandler, characterUI);
+                    playerWorkSelectionUI.PlayerWorkSelectionDisplay(inputHandler, characterUI, engine);
                     break;
                 case 1:
                     break;

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using static Text_RPG.UI.GameMenuBoxHandler;
 using Text_RPG.UI.PlayerMenuUI.InventoryUI;
 using Text_RPG.Util;
+using Text_RPG.GameEngine;
 
 namespace Text_RPG.UI.PlayerMenuUI.CharacterMenuUI
 {
@@ -24,7 +25,7 @@ namespace Text_RPG.UI.PlayerMenuUI.CharacterMenuUI
 
         protected static readonly GameBoxHandler PlayerWorkSelectionBoxHandler = new GameBoxHandler(PlayerWorkSelectionNumber);
 
-        public void PlayerWorkSelectionDisplay(InputHandler inputHandler, CharacterSelectionUI characterUI)
+        public void PlayerWorkSelectionDisplay(InputHandler inputHandler, CharacterSelectionUI characterUI, Engine engine)
         {
 
             bool conti = true;
@@ -48,12 +49,12 @@ namespace Text_RPG.UI.PlayerMenuUI.CharacterMenuUI
                 }
                 else if (key == ConsoleKey.V)
                 {
-                    PlayerMenuDisplay(inputHandler, characterUI);
+                    PlayerMenuDisplay(inputHandler, characterUI, engine);
                     conti = false;
                 }
                 else if(key == ConsoleKey.C)
                 {
-                    DisplayCaharcterMenu(inputHandler, characterUI);
+                    DisplayCaharcterMenu(inputHandler, characterUI, engine);
                     conti = false;
                 }
             }

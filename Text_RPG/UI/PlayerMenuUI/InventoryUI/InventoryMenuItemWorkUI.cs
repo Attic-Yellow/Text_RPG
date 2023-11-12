@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using static Text_RPG.UI.GameMenuBoxHandler;
 using Text_RPG.Util;
+using Text_RPG.GameEngine;
 
 namespace Text_RPG.UI.PlayerMenuUI.InventoryUI
 {
@@ -14,7 +15,7 @@ namespace Text_RPG.UI.PlayerMenuUI.InventoryUI
 
         protected static readonly GameBoxHandler InventoryMenuItemWorkBoxHandler = new GameBoxHandler(InventoryMenuItemWorkNumber);
 
-        public static void InventoryMenuItemWorkDisplay(InputHandler inputHandler, CharacterSelectionUI characterUI)
+        public static void InventoryMenuItemWorkDisplay(InputHandler inputHandler, CharacterSelectionUI characterUI, Engine engine)
         {
             bool conti = true;
             while (conti)
@@ -37,12 +38,12 @@ namespace Text_RPG.UI.PlayerMenuUI.InventoryUI
                 }
                 else if (key == ConsoleKey.V)
                 {
-                    InventoryMenuItemDisplay(inputHandler, characterUI);
+                    InventoryMenuItemDisplay(inputHandler, characterUI, engine);
                     conti = false;
                 }
                 else if (key == ConsoleKey.C)
                 {
-                    DisplayCaharcterMenu(inputHandler, characterUI);
+                    DisplayCaharcterMenu(inputHandler, characterUI, engine);
                     conti = false;
                 }
             }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Text_RPG.UI;
 using Text_RPG.Util;
@@ -36,8 +37,8 @@ namespace Text_RPG.GameEngine
 
         public void Start()
         {
-            StartUI.DisplayMainMenu(_inputHandler, _characterUI);
-            _userCharacters = _characterUI.DisplayCharacterSelection(_inputHandler);
+            StartUI.DisplayMainMenu(_inputHandler, _characterUI, this);
+            _userCharacters = LoadCharacterData();
            
             Update();
         }
@@ -47,7 +48,7 @@ namespace Text_RPG.GameEngine
             bool running = true;
             while (running)
             {
-                MainPageUI.DisplayMainPageMenu(_inputHandler, _characterUI);
+                MainPageUI.DisplayMainPageMenu(_inputHandler, _characterUI, this);
                 ConsoleKey userInput = _inputHandler.GetUserInput();
                 _inputHandler.ProcessInput(userInput);
             }
@@ -56,6 +57,26 @@ namespace Text_RPG.GameEngine
         public void Release()
         {
             
+        }
+
+        // 저장하기
+        public void SaveCharacterData()
+        {
+            string path = "characterData.json";
+
+            using (StreamWriter writer = File.CreateText(path))
+            {
+                string jsonString = JsonSerializer.Serialize(_userCharacters);
+                writer.Write(jsonString);
+            }
+        }
+
+        // 불러오기
+        public Dictionary<string, string> LoadCharacterData()
+        {
+            using StreamReader reader = new StreamReader("characterData.json");
+            string json = reader.ReadToEnd();
+            return JsonSerializer.Deserialize<Dictionary<string, string>>(json);
         }
     }
 }

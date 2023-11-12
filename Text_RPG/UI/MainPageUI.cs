@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Text_RPG.GameEngine;
 using Text_RPG.UI.PlayerMenuUI;
 using Text_RPG.Util;
 
@@ -22,7 +23,7 @@ namespace Text_RPG.UI
 
         private static readonly BoxHandler mainPageMenuBoxHandler = new BoxHandler(mainPageMenuNumber);
 
-        public static void DisplayMainPageMenu(InputHandler inputHandler, CharacterSelectionUI characterUI)
+        public static void DisplayMainPageMenu(InputHandler inputHandler, CharacterSelectionUI characterUI, Engine engine)
         {
             PlayerMenuSelectionUI characterMenuUI = new PlayerMenuSelectionUI();
 
@@ -36,12 +37,12 @@ namespace Text_RPG.UI
                 mainPageMenuBoxHandler.Navigate(key);
                 if (key == ConsoleKey.Enter)
                 {
-                    MainPagePerformAction(inputHandler, characterUI, mainPageMenuBoxHandler.Box.SelectedIndex);
+                    MainPagePerformAction(inputHandler, characterUI, mainPageMenuBoxHandler.Box.SelectedIndex, engine);
                 }
             }
         }
 
-        private static void MainPagePerformAction(InputHandler inputHandler, CharacterSelectionUI characterUI, int selectedIndex)
+        private static void MainPagePerformAction(InputHandler inputHandler, CharacterSelectionUI characterUI, int selectedIndex, Engine engine)
         {
             switch (selectedIndex)
             {
@@ -50,7 +51,7 @@ namespace Text_RPG.UI
                     break;
                 case 1:
                     Console.Clear();
-                    PlayerMenuSelectionUI.DisplayCaharcterMenu(inputHandler, characterUI);
+                    PlayerMenuSelectionUI.DisplayCaharcterMenu(inputHandler, characterUI, engine);
                     Console.ReadKey(); 
                     break;
                 case 2:
@@ -60,7 +61,7 @@ namespace Text_RPG.UI
                     Console.Clear();
                     break;
                 case 4:
-                    Console.Clear();
+                    engine.SaveCharacterData();
                     break;
                 case 5: // 종료
                     Environment.Exit(0);

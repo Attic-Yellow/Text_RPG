@@ -1,5 +1,6 @@
 ﻿using Text_RPG.UI.PlayerMenuUI.CharacterMenuUI;
 using Text_RPG.UI.PlayerMenuUI.InventoryUI;
+using Text_RPG.GameEngine;
 using Text_RPG.Util;
 using static Text_RPG.UI.GameMenuBoxHandler;
 
@@ -19,7 +20,7 @@ namespace Text_RPG.UI.PlayerMenuUI
 
         protected static readonly GameBoxHandler menuBoxHandler = new GameBoxHandler(menuNumber);
 
-        public static void DisplayCaharcterMenu(InputHandler inputHandler, CharacterSelectionUI characterUI)
+        public static void DisplayCaharcterMenu(InputHandler inputHandler, CharacterSelectionUI characterUI, Engine engine)
         {
             bool conti = true;
             while (conti)
@@ -33,28 +34,28 @@ namespace Text_RPG.UI.PlayerMenuUI
                 menuBoxHandler.Navigate(key);
                 if (key == ConsoleKey.Enter)
                 {
-                    CharacterPerformAction(inputHandler, characterUI, menuBoxHandler.Box.SelectedIndex);
+                    CharacterPerformAction(inputHandler, characterUI, menuBoxHandler.Box.SelectedIndex, engine);
                     conti = false;
                 }
             }
         }
-        private static void CharacterPerformAction(InputHandler inputHandler, CharacterSelectionUI characterUI, int selectedIndex)
+        private static void CharacterPerformAction(InputHandler inputHandler, CharacterSelectionUI characterUI, int selectedIndex, Engine engine)
         {
             switch (selectedIndex)
             {
                 case 0:
                     PlayerCharacterMenuUI playerCharacterMenuUI = new PlayerCharacterMenuUI(characterUI);
-                    playerCharacterMenuUI.PlayerMenuDisplay(inputHandler, characterUI);
+                    playerCharacterMenuUI.PlayerMenuDisplay(inputHandler, characterUI, engine);
                     break;
                 case 1:
                     break;
                 case 2:
-                    InventoryMenuUI.InventoryMenuDisplay(inputHandler, characterUI);
+                    InventoryMenuUI.InventoryMenuDisplay(inputHandler, characterUI, engine);
                     break;
                 case 3:
                     break;
                 case 4:
-                    MainPageUI.DisplayMainPageMenu(inputHandler, characterUI);
+                    MainPageUI.DisplayMainPageMenu(inputHandler, characterUI, engine);
                     break;
             }
         }
