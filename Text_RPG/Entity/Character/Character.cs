@@ -7,24 +7,31 @@ using Text_RPG.Skill;
 
 namespace Text_RPG.Entity.Character
 {
-    public abstract class Character : Entity
+    public class Character : Entity
     {
+        public Data.PlayerClass playerClass { get; set; }
         public int level { get; set; }
         public int maxHp { get; set; }
         public int currentHp { get; set; }
         public int attack { get; set; }
         public int defense { get; set; }
-        public int critRate { get; set; }
-        public int critPer { get; set; }
+        public double critRate { get; set; }
+        public double critPer { get; set; }
 
         public List<Skill.Skill> skillList = new List<Skill.Skill>();
 
-        public void LevelUp()
+        public virtual void LevelUp()
         {
             level += 1;
-            StatUp();
         }
 
-        public abstract void StatUp();
+        public void StatUp(Items.Item item)
+        {
+            if (item is Items.Equipments.Weapons.Weapon)
+            {
+                // this.attack += item.attack
+            }
+            
+        }
     }
 }

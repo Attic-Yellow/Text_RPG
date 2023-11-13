@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Text_RPG.Entity;
 using Text_RPG.Util;
 
 namespace Text_RPG.UI
@@ -10,6 +11,7 @@ namespace Text_RPG.UI
     public class CharacterSelectionUI
     {
         private List<string> availableCharacters = new List<string> { "전사", "마법사", "궁수" };
+        private List<Data.PlayerClass> availableCharacters2 = new List<Data.PlayerClass>();
         private Dictionary<string, string> selectedCharacters = new Dictionary<string, string>();
         private int selectedIndex = 0;
 
@@ -36,6 +38,7 @@ namespace Text_RPG.UI
                         break;
                     case ConsoleKey.Enter:
                         string selectedClass = availableCharacters[selectedIndex];
+                        Data.PlayerClass selectedClass2 = availableCharacters2[selectedIndex];
                         Console.Clear();
 
                         // 텍스트 박스의 크기와 위치 계산
@@ -51,6 +54,8 @@ namespace Text_RPG.UI
                         Console.SetCursorPosition(startX, startY);
                         Console.Write($"{selectedClass}의 이름: ");
                         string name = Console.ReadLine();
+
+                        CreateEntity creator = new CreateEntity(name, selectedClass2);
 
                         string keyToSave = $"{selectedClass}{selectedCharacters.Count + 1}";
                         selectedCharacters[keyToSave] = name;
