@@ -8,9 +8,17 @@ namespace Text_RPG.Entity.Monster
 {
     public class Monster : Entity
     {
-        public int Attack { get; set; }
-        public int Defense { get; set; }
-        public int Exp { get; set; }
+        public int maxHp { get; set; }
+        public int currentHp { get; set; }
+        public int attack { get; set; }
+        public int defense { get; set; }
+        public int exp { get; set; }
+
+        public int gold { get; set; }
+        public List<Items.Item> itemDropList { get; set; }
+
+        public List<Skill.Skill> skillList = new List<Skill.Skill>();
+
         // 추가적인 스탯, 능력치, 드롭 아이템 등의 속성
     }
 
