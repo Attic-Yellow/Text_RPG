@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace Text_RPG.Skill.Common.Monster
 {
-    internal class Defend
+    public class Defend : Skill
     {
+        public override void Execute()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

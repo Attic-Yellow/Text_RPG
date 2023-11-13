@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Text_RPG.Entity
+namespace Text_RPG.Entity.Monster
 {
     public class Monster : Entity
     {

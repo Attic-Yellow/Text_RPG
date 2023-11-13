@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Text_RPG.Entity;
+using Text_RPG.Entity.Character;
+using Text_RPG.Entity.Monster;
 
 namespace Text_RPG.Battle
 {
-    internal class SkillCommand : Command
+    public class SkillCommand : Command
     {
         public Character character;
         public Skill skill;

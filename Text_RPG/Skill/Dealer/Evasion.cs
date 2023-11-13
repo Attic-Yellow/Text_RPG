@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace Text_RPG.Skill.Dealer
 {
-    internal class Evasion
+    public class Evasion : Skill
     {
+        public override void Execute()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

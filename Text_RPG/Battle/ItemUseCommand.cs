@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Text_RPG.Entity;
+using Text_RPG.Entity.Character;
 using Text_RPG.Items;
 
 namespace Text_RPG.Battle
 {
-    internal class ItemUseCommand : Command
+    public class ItemUseCommand : Command
     {
         Item item;
         Character target;

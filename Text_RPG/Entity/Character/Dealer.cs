@@ -4,11 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Text_RPG.Battle
+namespace Text_RPG.Entity.Character
 {
-    public abstract class Command
+    public class Dealer : Character
     {
-        public int priority;
-        public abstract void Execute();
     }
 }

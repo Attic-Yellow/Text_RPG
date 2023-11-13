@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace Text_RPG.Skill.Healer
 {
-    internal class ShieldForAll
+    public class ShieldForAll : Skill
     {
+        public override void Execute()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace Text_RPG
 {
-    internal class Player
+    public class Player
     {
+        // 캐릭터 3개
+        // 인벤토리
+        // 진행정도
     }
 }

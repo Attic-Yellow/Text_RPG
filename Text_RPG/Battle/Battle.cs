@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Text_RPG.Battle.NOTE;
-using Text_RPG.Entity;
+using Text_RPG.Entity.Character;
+using Text_RPG.Entity.Monster;
 
 namespace Text_RPG.Battle
 {
-    internal class Battle<T> where T : Monster
+    public class Battle<T> where T : Monster
     {
         public Character[] characters;  // Player로 변할 수도 있음.
         public T monster;

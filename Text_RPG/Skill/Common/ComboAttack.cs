@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace Text_RPG.Skill.Common
 {
-    internal class ComboAttack
+    
+    class ComboAttack : Skill
     {
+        public override void Execute()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

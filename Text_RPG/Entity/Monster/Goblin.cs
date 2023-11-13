@@ -4,11 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Text_RPG.Battle
+namespace Text_RPG.Entity.Monster
 {
-    public abstract class Command
+    public class Goblin: Monster
     {
-        public int priority;
-        public abstract void Execute();
     }
 }
