@@ -40,8 +40,6 @@ namespace Text_RPG
 
             inventory.Gold -= item.BuyGold;
             inventory.AddItem(item.DeepCopy());
-
-
         }
     }
 }
