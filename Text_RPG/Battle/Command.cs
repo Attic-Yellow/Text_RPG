@@ -1,0 +1,14 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Text_RPG.Battle
+{
+    public abstract class Command
+    {
+        public int priority;
+        public abstract void Execute();
+    }
+}
