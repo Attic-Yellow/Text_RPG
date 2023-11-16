@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Text_RPG.Battle.NOTE;
 using Text_RPG.Entity.Character;
 using Text_RPG.Entity.Monster;
+using Text_RPG.Skill;
 
 namespace Text_RPG.Battle
 {
@@ -31,8 +32,8 @@ namespace Text_RPG.Battle
         }
         public void MonsterCommandSelect()
         {
-            List<Skill> usableSkills = new List<Skill>();
-            List<Skill> monsterPicks = new List<Skill>();
+            List<Skill.Skill> usableSkills = new List<Skill.Skill>();
+            List<Skill.Skill> monsterPicks = new List<Skill.Skill>();
             for (int i = 0; i < 5; i++)
             {
                 if (monster.skills[i].cooldown != 0)
