@@ -10,10 +10,16 @@ namespace Text_RPG.Entity
     {
         public enum PlayerClass
         {
-            None,
             Defender,
             Dealer,
             Healer,
         }
+        
+        public enum MonsterClass
+        {
+            None,
+            
+        }
+       
     }
 }

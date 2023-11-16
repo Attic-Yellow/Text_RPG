@@ -10,8 +10,8 @@ namespace Text_RPG.UI
 {
     public class CharacterSelectionUI
     {
-        private List<string> availableCharacters = new List<string> { "전사", "마법사", "궁수" };
-        private List<Data.PlayerClass> availableCharacters2 = new List<Data.PlayerClass>();
+        private List<string> availableCharacters = new List<string> { "전사", "궁수", "마법사" };
+        private List<Data.PlayerClass> availableCharacters2 = new List<Data.PlayerClass> { Data.PlayerClass.Defender, Data.PlayerClass.Dealer, Data.PlayerClass.Healer };
         private Dictionary<string, string> selectedCharacters = new Dictionary<string, string>();
         private int selectedIndex = 0;
 

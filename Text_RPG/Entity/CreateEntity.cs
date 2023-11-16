@@ -32,5 +32,12 @@ namespace Text_RPG.Entity
                     break;
             }
         }
+        public CreateEntity(string name, Data.MonsterClass monsterClass)
+        {
+            switch (monsterClass)
+            {
+
+            }
+        }
     }
 }

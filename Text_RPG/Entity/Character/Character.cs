@@ -23,10 +23,13 @@ namespace Text_RPG.Entity.Character
         public virtual void LevelUp()
         {
             level += 1;
+            Console.WriteLine("TESTESTESTS");
+
         }
 
         public void StatUp(Items.Item item)
         {
+            Console.WriteLine("Test@@");
             if (item is Items.Equipments.Weapons.Weapon)
             {
                 // this.attack += item.attack
