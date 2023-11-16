@@ -20,17 +20,20 @@ namespace Text_RPG.Entity.Character
 
         public List<Skill.Skill> skillList = new List<Skill.Skill>();
 
+        public Character()
+        {
+            skillList.Add(new Skill.Common.Attack());
+            skillList.Add(new Skill.Common.HardAttack());
+        }
+
         public virtual void LevelUp()
         {
             level += 1;
-            Console.WriteLine("Level Up!");
-            Console.WriteLine("TESTESTESTS");
 
         }
 
         public void StatUp(Items.Item item)
         {
-            Console.WriteLine("Test@@");
             if (item is Items.Equipments.Weapons.Weapon)
             {
                 // this.attack += item.attack

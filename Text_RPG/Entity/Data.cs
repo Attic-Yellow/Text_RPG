@@ -18,7 +18,9 @@ namespace Text_RPG.Entity
         public enum MonsterClass
         {
             None,
-            
+            Goblin,
+            Dragon,
+            Ogre
         }
        
     }

@@ -18,6 +18,11 @@ namespace Text_RPG.Entity.Character
             defense = 50;
             critRate = 40;
             critPer = 20;
+
+            skillList.Add(new Skill.Defender.CounterForAll());
+            skillList.Add(new Skill.Defender.DeffenseBuff());
+            skillList.Add(new Skill.Defender.Provoke());
+            skillList.Add(new Skill.Defender.Shield());
         }
 
         public override void LevelUp()

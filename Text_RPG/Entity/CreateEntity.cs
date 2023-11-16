@@ -36,7 +36,12 @@ namespace Text_RPG.Entity
         {
             switch (monsterClass)
             {
-
+                case Data.MonsterClass.Goblin:
+                    break;
+                case Data.MonsterClass.Ogre:
+                    break;
+                case Data.MonsterClass.Dragon:
+                    break;
             }
         }
     }

@@ -17,6 +17,11 @@ namespace Text_RPG.Entity.Character
             defense = 30;
             critRate = 50;
             critPer = 30;
+
+            skillList.Add(new Skill.Dealer.AttackBuff());
+            skillList.Add(new Skill.Dealer.Counter());
+            skillList.Add(new Skill.Dealer.Evasion());
+            skillList.Add(new Skill.Dealer.ReduceArmor());
         }
         
         public override void LevelUp()
