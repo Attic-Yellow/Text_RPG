@@ -19,10 +19,16 @@ namespace Text_RPG.Entity
             switch (playerClass)
             {
                 case Data.PlayerClass.Defender:
+                    Defender newDefender = new Defender();
+                    characters.Add(newDefender);
                     break;
                 case Data.PlayerClass.Dealer:
+                    Dealer newDealer = new Dealer();
+                    characters.Add(newDealer);
                     break;
                 case Data.PlayerClass.Healer:
+                    Healer newHealer = new Healer();
+                    characters.Add(newHealer);
                     break;
             }
         }
