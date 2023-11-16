@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Text_RPG.Skill.Healer
+namespace Text_RPG.Skill.Goblin
 {
-    
-    class AttackBuffForAll : Skill
+    public class StealMoney : Skill
     {
         public override void Execute()
         {
