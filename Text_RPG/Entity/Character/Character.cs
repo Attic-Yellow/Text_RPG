@@ -23,6 +23,7 @@ namespace Text_RPG.Entity.Character
         public virtual void LevelUp()
         {
             level += 1;
+            Console.WriteLine("Level Up!");
             Console.WriteLine("TESTESTESTS");
 
         }
