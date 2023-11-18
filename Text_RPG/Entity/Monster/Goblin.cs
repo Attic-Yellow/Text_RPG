@@ -8,5 +8,11 @@ namespace Text_RPG.Entity.Monster
 {
     public class Goblin: Monster
     {
+        public Goblin()
+        {
+            // stats
+            skillList.Add(new Skill.Goblin.StealMoney());
+        }
+
     }
 }

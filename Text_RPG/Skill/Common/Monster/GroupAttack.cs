@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Text_RPG.Skill.Interface;
 
 namespace Text_RPG.Skill.Common.Monster
 {
-    public class Counter : Skill
+    public class GroupAttack : Skill, ITargetAll
     {
         public override void Execute()
         {

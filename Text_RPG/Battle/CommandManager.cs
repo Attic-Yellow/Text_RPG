@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace Text_RPG.Battle
 {
+    /// <summary>
+    /// 커맨드 4개 배열
+    /// </summary>
     public class CommandManager
     {
         public Command[] commands = new Command[4];

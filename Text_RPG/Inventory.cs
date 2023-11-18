@@ -10,7 +10,7 @@ using Text_RPG.Items.Equipments;
 
 namespace Text_RPG
 {
-    internal class Inventory
+    public class Inventory
     {
         private List<List<Item>> inventories;
         private int maxSlot;

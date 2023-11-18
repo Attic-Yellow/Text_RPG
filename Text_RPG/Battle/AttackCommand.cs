@@ -11,17 +11,23 @@ namespace Text_RPG.Battle
     public class AttackCommand : Command
     {
         public Character character;
-        public Monster target;
+        public Monster monster;
         public AttackCommand(Character character, Monster target)
         {
             this.character = character;
-            this.target = target;
-            priority = 4;
+            priority = 8;
+            this.monster = target;
+        }
+
+        public AttackCommand(Monster monster)
+        {
+            this.monster = monster;
+            priority = 8;
         }
 
         public override void Execute()
         {
-            character.Attack(target);
+            character.skillList[0].Execute();
         }
     }
 }

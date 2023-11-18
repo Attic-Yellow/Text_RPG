@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Text_RPG.Items.Consumptions
 {
-    internal abstract class Consumption : Item
+    public abstract class Consumption : Item
     {
         protected ConsumptionTypes consumptionType;
         protected int itemCount;

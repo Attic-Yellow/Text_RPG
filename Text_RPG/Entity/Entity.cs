@@ -9,6 +9,7 @@ namespace Text_RPG.Entity
     public class Entity
     {
         public string Name { get; set; }    // 이름
+        public bool Alive { get; set; }
     }
 
 }

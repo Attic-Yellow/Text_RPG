@@ -19,6 +19,13 @@ namespace Text_RPG.Entity.Monster
 
         public List<Skill.Skill> skillList = new List<Skill.Skill>();
 
+        public Monster()
+        {
+            skillList.Add(new Skill.Common.Attack());
+            skillList.Add(new Skill.Common.HardAttack());
+            skillList.Add(new Skill.Common.Monster.GroupAttack());
+            skillList.Add(new Skill.Common.Monster.Recover());
+        }
         // 추가적인 스탯, 능력치, 드롭 아이템 등의 속성
     }
 
