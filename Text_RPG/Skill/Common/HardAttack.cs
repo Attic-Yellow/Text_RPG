@@ -7,7 +7,7 @@ using Text_RPG.Skill.Interface;
 
 namespace Text_RPG.Skill.Common
 {
-    public class HardAttack : Skill , ITargetPlayer
+    public class HardAttack : Skill , ITargetOne, ITargetMonster
     {
         public override void Execute()
         {

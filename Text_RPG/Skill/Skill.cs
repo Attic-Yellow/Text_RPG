@@ -10,7 +10,7 @@ using Text_RPG.UI;
 
 namespace Text_RPG.Skill
 {
-    public abstract class Skill : ITargetSelf, ITargetAll, ITargetOne, ITargetPlayer
+    public abstract class Skill
     {
         public string name;
         public int priority;
@@ -24,6 +24,11 @@ namespace Text_RPG.Skill
         public void SetTarget(Character target) 
         {
             this.character = target;
+        }
+
+        public void SetTarget(Monster target)
+        {
+            this.monster = target;
         }
 
         public void SetTargetAll(Character[] targets)

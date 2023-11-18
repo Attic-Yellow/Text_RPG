@@ -7,7 +7,7 @@ using Text_RPG.Skill.Interface;
 
 namespace Text_RPG.Skill.Common.Monster
 {
-    public class Recover : Skill, ITargetPlayer
+    public class Recover : Skill, ITargetSelf
     {
         public override void Execute()
         {

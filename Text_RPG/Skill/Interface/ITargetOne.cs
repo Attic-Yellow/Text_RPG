@@ -9,6 +9,5 @@ namespace Text_RPG.Skill.Interface
 {
     public interface ITargetOne
     {
-        public void SetTarget(Character target);
     }
 }

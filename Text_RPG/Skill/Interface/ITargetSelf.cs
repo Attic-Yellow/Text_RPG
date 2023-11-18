@@ -9,6 +9,5 @@ namespace Text_RPG.Skill.Interface
 {
     public interface ITargetSelf
     {
-        public void SetTargetSelf(Character owner);
     }
 }

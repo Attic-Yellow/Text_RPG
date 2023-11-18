@@ -10,6 +10,5 @@ namespace Text_RPG.Skill.Interface
 {
     public interface ITargetAll
     {
-        public void SetTargetAll(Character[] targets);
     }
 }

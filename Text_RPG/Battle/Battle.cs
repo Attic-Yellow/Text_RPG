@@ -35,6 +35,7 @@ namespace Text_RPG.Battle
         bool OnBattle;  // charcter 전멸 혹은 monster 죽음
         public Random random = new Random();
         public Text_RPG.Battle.Battle<T> battle;
+        int alive = 3;
 
         public Battle(Player player, T monster)
         {
@@ -87,13 +88,37 @@ namespace Text_RPG.Battle
             int RandomValue2 = random.Next(0, 101);
             if (RandomValue2 <= RandomValue)
             {
-                
-                commandManager.AddCommand(new SkillCommand(monster, monsterPicks[0]), 3);
+                monsterPicks.RemoveAt(1);
             }
             else
             {
-                commandManager.AddCommand(new SkillCommand(monster, monsterPicks[1]), 3);
+                monsterPicks.RemoveAt(0);
             }
+            if (monsterPicks[0] is ITargetPlayer)
+            {
+                monsterPicks[0].SetTargetPlayer(player);
+            }
+            else if (monsterPicks[0] is ITargetOne)
+            {
+                while (true)
+                {
+                    int randomtarget = random.Next(0, 3);
+                    if (player.characters[randomtarget].Alive)
+                    {
+                        monsterPicks[0].SetTarget(player.characters[randomtarget]);
+                        break;
+                    }
+                }
+            }
+            else if (monsterPicks[0] is ITargetSelf)
+            {
+                monsterPicks[0].SetTarget(monster);
+            }
+            else if (monsterPicks[0] is ITargetAll)
+            {
+                monsterPicks[0].SetTargetAll(player.characters);
+            }
+                commandManager.AddCommand(new SkillCommand(monster, monsterPicks[0]), 3);
         }
 
         public void CheckPlayerStatus()
@@ -103,6 +128,10 @@ namespace Text_RPG.Battle
                 if (player.characters[0].Alive == false)
                 {
                     commandManager.AddCommand(new NullCommand(player.characters[i]), i);
+                }
+                else
+                {
+                    alive++;
                 }
             }
         }
@@ -143,26 +172,32 @@ namespace Text_RPG.Battle
                     case "a":
                     case "A":
                         commandManager.AddCommand(new AttackCommand(selected,monster), Array.IndexOf(player.characters, selected));
-
+                        break;
 
                     // 명령 선택 : 스킬 "S" -> "QWERT"
                     case "s":
                     case "S":
+                        switch (Input())
+                        {
+                            case "q":
+                            case "Q":
 
-                    case "q":
-                    case "Q":
+                            case "w":
+                            case "W":
 
-                    case "w":
-                    case "W":
+                            case "e":
+                            case "e":
 
-                    case "e":
-                    case "e":
+                            case "r":
+                            case "R":
 
-                    case "e":
-                    case "e":
+                            case "t":
+                            case "T":
 
-                    case "e":
-                    case "e":
+                            case "s":
+                            case "S":
+                        }
+                        break;
 
                     // 명령 선택 : 인벤토리 "I"
                     case "i":
@@ -190,7 +225,54 @@ namespace Text_RPG.Battle
         public string Input()
         {
             return Console.ReadLine();
+        }
 
+        public void SetTarget(Skill.Skill skill, Character executer)
+        {
+            if (skill is ITargetAll)
+            {
+                skill.SetTargetAll(player.characters);
+            }
+            else if (skill is ITargetMonster)
+            {
+                skill.SetTarget(monster);
+            }
+            else if (skill is ITargetOne)
+            {
+                while (true)
+                {
+                    Character target = ChooseTarget();
+                    if (target.Alive)
+                    {
+                        skill.SetTarget(target);
+                        continue;
+                    }
+                }
+            }
+            else if (skill is ITargetSelf)
+            {
+                skill.SetTargetSelf(executer);
+            }
+            else if (skill is ITargetPlayer)
+            { }
+        }
+
+        public Character ChooseTarget()
+        {
+            switch (Input())
+            {
+                case "1":
+                    return player.characters[0];
+                    break;
+                case "2":
+                    return player.characters[1];
+                    break;
+                case "3":
+                    return player.characters[2];
+                    break;
+                default:
+                    return player.characters[0];
+            }
         }
 
         public void CommandSort()
