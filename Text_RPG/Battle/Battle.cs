@@ -281,7 +281,9 @@ namespace Text_RPG.Battle
         }
 
         public void CommandExecute()
-        { }
+        {
+            commandManager.ExecuteCommand();
+        }
 
         public void ExitTurn()
         {
