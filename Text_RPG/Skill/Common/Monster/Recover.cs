@@ -7,9 +7,14 @@ using Text_RPG.Skill.Interface;
 
 namespace Text_RPG.Skill.Common.Monster
 {
-    public class Recover : Skill, ITargetSelf
+    public class Recover : Skill
     {
         public override void Execute()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void SetTarget()
         {
             throw new NotImplementedException();
         }

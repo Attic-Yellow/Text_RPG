@@ -8,11 +8,16 @@ using Text_RPG.Skill.Interface;
 
 namespace Text_RPG.Skill.Goblin
 {
-    public class StealMoney : Skill, ITargetPlayer
+    public class StealMoney : Skill
     {
         public override void Execute()
         {
             
+        }
+
+        public override void SetTarget()
+        {
+            throw new NotImplementedException();
         }
     }
 }

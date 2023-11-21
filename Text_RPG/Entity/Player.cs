@@ -8,12 +8,12 @@ using Text_RPG.Items.Consumptions;
 using Text_RPG.Items.Equipments;
 using Text_RPG.Items;
 
-namespace Text_RPG
+namespace Text_RPG.Entity
 {
-    public class Player
+    public class Player : Entity
     {
         // 캐릭터 3개
-        public Character[] characters;
+        public Character.Character[] characters;
         // 인벤토리
         public Inventory inventory;
         // 진행정도
@@ -21,7 +21,7 @@ namespace Text_RPG
         public int Progress { get { return progress; } set { progress = value; } }
         public Player()
         {
-            characters = new Character[3];
+            characters = new Character.Character[3];
             inventory = new Inventory();
             progress = 0;
         }

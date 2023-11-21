@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Text_RPG.Entity;
 using Text_RPG.Entity.Character;
 using Text_RPG.Entity.Monster;
 using Text_RPG.Skill;
@@ -94,30 +95,7 @@ namespace Text_RPG.Battle
             {
                 monsterPicks.RemoveAt(0);
             }
-            if (monsterPicks[0] is ITargetPlayer)
-            {
-                monsterPicks[0].SetTargetPlayer(player);
-            }
-            else if (monsterPicks[0] is ITargetOne)
-            {
-                while (true)
-                {
-                    int randomtarget = random.Next(0, 3);
-                    if (player.characters[randomtarget].Alive)
-                    {
-                        monsterPicks[0].SetTarget(player.characters[randomtarget]);
-                        break;
-                    }
-                }
-            }
-            else if (monsterPicks[0] is ITargetSelf)
-            {
-                monsterPicks[0].SetTarget(monster);
-            }
-            else if (monsterPicks[0] is ITargetAll)
-            {
-                monsterPicks[0].SetTargetAll(player.characters);
-            }
+                monsterPicks[0].SetTarget();
                 commandManager.AddCommand(new SkillCommand(monster, monsterPicks[0]), 3);
         }
 
@@ -227,34 +205,9 @@ namespace Text_RPG.Battle
             return Console.ReadLine();
         }
 
-        public void SetTarget(Skill.Skill skill, Character executer)
+        public void SetTarget(Skill.Skill skill)
         {
-            if (skill is ITargetAll)
-            {
-                skill.SetTargetAll(player.characters);
-            }
-            else if (skill is ITargetMonster)
-            {
-                skill.SetTarget(monster);
-            }
-            else if (skill is ITargetOne)
-            {
-                while (true)
-                {
-                    Character target = ChooseTarget();
-                    if (target.Alive)
-                    {
-                        skill.SetTarget(target);
-                        continue;
-                    }
-                }
-            }
-            else if (skill is ITargetSelf)
-            {
-                skill.SetTargetSelf(executer);
-            }
-            else if (skill is ITargetPlayer)
-            { }
+            skill.SetTarget();
         }
 
         public Character ChooseTarget()

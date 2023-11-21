@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Text_RPG.Entity;
 using Text_RPG.Entity.Character;
 using Text_RPG.Entity.Monster;
 using Text_RPG.Skill.Interface;
@@ -10,40 +11,22 @@ using Text_RPG.UI;
 
 namespace Text_RPG.Skill
 {
-    public abstract class Skill
+    public abstract class Skill : ITargetable, IExecutable
     {
+        public Player player;
+        public Entity.Entity owner;
         public string name;
         public int priority;
         public int cooldown;
-        public Character character;
-        public Character[] characters;
-        public Monster monster;
-        public Player player;
+        public List<List<Entity.Entity>> targetList;
+
+        public Skill(Entity.Entity owner, List<List<Entity.Entity>> targetList)
+        {
+            this.owner = owner;
+            this.targetList = targetList;
+        }
 
         public abstract void Execute();
-        public void SetTarget(Character target) 
-        {
-            this.character = target;
-        }
-
-        public void SetTarget(Monster target)
-        {
-            this.monster = target;
-        }
-
-        public void SetTargetAll(Character[] targets)
-        {
-            this.characters = targets;
-        }
-
-        public void SetTargetSelf(Character owner)
-        {
-            this.character = owner;
-        }
-
-        public void SetTargetPlayer(Player player)
-        {
-            this.player = player;
-        }
+        public abstract void SetTarget();
     }
 }

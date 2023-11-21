@@ -7,9 +7,13 @@ using Text_RPG.Skill.Interface;
 
 namespace Text_RPG.Skill.Common.Monster
 {
-    public class GroupAttack : Skill, ITargetAll
+    public class GroupAttack : Skill
     {
         public override void Execute()
+        {
+            throw new NotImplementedException();
+        }
+        public override void SetTarget()
         {
             throw new NotImplementedException();
         }

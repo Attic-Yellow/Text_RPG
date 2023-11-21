@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using Text_RPG.Entity;
 using Text_RPG.Items;
 using Text_RPG.Items.Consumptions;
 using Text_RPG.Items.Equipments;
@@ -12,11 +13,13 @@ namespace Text_RPG
 {
     public class Inventory
     {
+        public Player owner;
         private List<List<Item>> inventories;
         private int maxSlot;
         private int gold;
-        public Inventory()
+        public Inventory(Player owner)
         {
+            this.owner = owner;
             gold = 0;
             maxSlot = 30;
             inventories = new List<List<Item>>();

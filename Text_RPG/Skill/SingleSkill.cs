@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Text_RPG.Skill.Interface
+namespace Text_RPG.Skill
 {
-    public interface ITargetPlayer
+    internal class SingleSkill
     {
     }
 }
