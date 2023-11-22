@@ -81,7 +81,9 @@ namespace Text_RPG
             RemoveItem(type, index);
         }
 
-    
-
+        public void Stealed(int stealedGold)
+        {
+            gold -= stealedGold;
+        }
     }
 }

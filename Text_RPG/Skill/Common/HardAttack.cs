@@ -8,9 +8,10 @@ using Text_RPG.Skill.Interface;
 
 namespace Text_RPG.Skill.Common
 {
-    public class HardAttack : Skill
+    public class HardAttack : SingleSkill
     {
-        public HardAttack(Character owner, List<List<Entity.Entity>> targetList) : base(owner, targetList)
+        public Entity.Entity target;
+        public HardAttack(Entity.Entity owner) : base(owner)
         {
         }
 
@@ -21,7 +22,22 @@ namespace Text_RPG.Skill.Common
 
         public override void SetTarget()
         {
-            throw new NotImplementedException();
+            if (owner is Character)
+            {
+                target = targetList[2][0];
+            }
+            else
+            {
+                Random random = new Random();
+                int rndTarget;
+                while (true)
+                {
+                    rndTarget = random.Next(0, 3);
+                    if (targetList[1][rndTarget].Alive)
+                        break;
+                }
+                target = targetList[1][rndTarget];
+            }
         }
     }
 }

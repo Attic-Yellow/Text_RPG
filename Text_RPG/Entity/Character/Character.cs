@@ -23,8 +23,8 @@ namespace Text_RPG.Entity.Character
         public Character()
         {
             Alive = true;
-            skillList.Add(new Skill.Common.Attack());
-            skillList.Add(new Skill.Common.HardAttack());
+            skillList.Add(new Skill.Common.Attack(this));
+            skillList.Add(new Skill.Common.HardAttack(this));
         }
 
         public virtual void LevelUp()

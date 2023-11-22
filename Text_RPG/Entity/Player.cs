@@ -22,7 +22,7 @@ namespace Text_RPG.Entity
         public Player()
         {
             characters = new Character.Character[3];
-            inventory = new Inventory();
+            inventory = new Inventory(this);
             progress = 0;
         }
         public List<Item> GetInventoryItems(Item.ItemTypes type)

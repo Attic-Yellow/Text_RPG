@@ -7,15 +7,14 @@ using Text_RPG.Skill.Interface;
 
 namespace Text_RPG.Skill.Common.Monster
 {
-    public class GroupAttack : Skill
+    public class GroupAttack : MultiSkill
     {
+        public GroupAttack(Entity.Entity owner) : base(owner)
+        {
+        }
+
         public override void Execute()
         {
-            throw new NotImplementedException();
-        }
-        public override void SetTarget()
-        {
-            throw new NotImplementedException();
         }
     }
 }

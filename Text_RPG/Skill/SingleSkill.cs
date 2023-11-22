@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace Text_RPG.Skill
 {
-    internal class SingleSkill
+    public abstract class SingleSkill : Skill
     {
+        protected SingleSkill(Entity.Entity owner) : base(owner)
+        {
+        }
+
+
     }
 }

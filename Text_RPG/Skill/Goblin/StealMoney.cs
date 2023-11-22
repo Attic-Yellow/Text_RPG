@@ -3,21 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Text_RPG.Entity;
 using Text_RPG.Entity.Character;
 using Text_RPG.Skill.Interface;
 
 namespace Text_RPG.Skill.Goblin
 {
-    public class StealMoney : Skill
+    public class StealMoney : PlayerSkill
     {
-        public override void Execute()
+        public StealMoney(Entity.Entity owner) : base(owner)
         {
-            
         }
 
-        public override void SetTarget()
+        public override void Execute()
         {
-            throw new NotImplementedException();
+            target.inventory.Stealed(200);
         }
     }
 }

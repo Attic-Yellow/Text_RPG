@@ -7,14 +7,13 @@ using Text_RPG.Skill.Interface;
 
 namespace Text_RPG.Skill.Common.Monster
 {
-    public class Recover : Skill
+    public class Recover : SelfSkill
     {
-        public override void Execute()
+        public Recover(Entity.Entity owner) : base(owner)
         {
-            throw new NotImplementedException();
         }
 
-        public override void SetTarget()
+        public override void Execute()
         {
             throw new NotImplementedException();
         }
