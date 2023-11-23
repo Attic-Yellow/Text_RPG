@@ -19,8 +19,7 @@ namespace Text_RPG.Skill.Healer
 
         public override void SetTarget()
         {
-            target = owner.targetList[1][0];
-
+            throw new NotImplementedException();
         }
     }
 }

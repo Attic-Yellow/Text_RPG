@@ -14,16 +14,23 @@ namespace Text_RPG.Battle
     /// </summary>
     public class SkillCommand : Command
     {
-        public Entity.Entity entity;
-        public Skill.Skill skill;
+        public Character character;
+        public Skill.SingleSkill skill;
+        public Monster monster;
 
-        public SkillCommand(Entity.Entity entity, Skill.Skill skill)
+        public SkillCommand(Character character, Skill.SingleSkill skill)     // player -> monster
         {
-            this.entity = entity;
+            this.character = character;
             this.skill = skill;
             this.priority = skill.priority;
         }
 
+        public SkillCommand(Monster monster, Skill.SingleSkill skill)     // monster -> player
+        {
+            this.monster = monster;
+            this.skill = skill;
+            this.priority = skill.priority;
+        }
 
         public override void Execute()
         {

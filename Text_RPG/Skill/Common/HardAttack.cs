@@ -21,22 +21,7 @@ namespace Text_RPG.Skill.Common
 
         public override void SetTarget()
         {
-            if (owner is Character)
-            {
-                target = owner.targetList[1][0];
-            }
-            else
-            {
-                Random random = new Random();
-                int rndTarget;
-                while (true)
-                {
-                    rndTarget = random.Next(0, 3);
-                    if (owner.targetList[0][rndTarget].Alive)
-                        break;
-                }
-                target = owner.targetList[0][rndTarget];
-            }
+            throw new NotImplementedException();
         }
     }
 }

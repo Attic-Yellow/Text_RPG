@@ -8,7 +8,7 @@ namespace Text_RPG.Skill.Defender
 {
     public class DeffenseBuff : SelfSkill
     {
-        public DeffenseBuff(Entity.Entity owner) : base(owner)
+        public DeffenseBuff(Entity.Entity owner, List<List<Entity.Entity>> targetList) : base(owner, targetList)
         {
         }
 

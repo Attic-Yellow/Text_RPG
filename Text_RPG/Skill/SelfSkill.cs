@@ -9,12 +9,14 @@ namespace Text_RPG.Skill
 {
     public abstract class SelfSkill : Skill
     {
-        public Entity.Entity target;
-        public SelfSkill(Entity.Entity owner) : base(owner)
+        Entity.Entity target;
+
+        protected SelfSkill(Entity.Entity owner) : base(owner)
         {
         }
 
         public override abstract void Execute();
+
 
         public override void SetTarget()
         {

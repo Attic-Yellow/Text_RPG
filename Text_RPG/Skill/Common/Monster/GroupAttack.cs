@@ -15,6 +15,7 @@ namespace Text_RPG.Skill.Common.Monster
 
         public override void Execute()
         {
+            throw new NotImplementedException();
         }
     }
 }

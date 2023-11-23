@@ -6,8 +6,12 @@ using System.Threading.Tasks;
 
 namespace Text_RPG.Skill.Defender
 {
-    public class CounterForAll : Skill
+    public class CounterForAll : MultiSkill
     {
+        public CounterForAll(Entity.Entity owner) : base(owner)
+        {
+        }
+
         public override void Execute()
         {
             throw new NotImplementedException();

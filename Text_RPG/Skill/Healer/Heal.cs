@@ -19,24 +19,7 @@ namespace Text_RPG.Skill.Healer
 
         public override void SetTarget()
         {
-            int input;
-            while (true)
-            {
-                string inputStr = Console.ReadLine();
-                try
-                {
-                    input = int.Parse(inputStr);
-                }
-                catch
-                {
-                    continue;
-                }
-                if (owner.targetList[0][input].Alive)
-                    break;
-                else
-                    continue;
-            }
-            target = owner.targetList[0][input];
+            throw new NotImplementedException();
         }
     }
 }

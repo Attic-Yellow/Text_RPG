@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Text_RPG.Skill.Dealer
 {
-    public class Counter : SingleSkill
+    public class Counter : SelfSkill
     {
         public Counter(Entity.Entity owner) : base(owner)
         {
@@ -17,9 +17,5 @@ namespace Text_RPG.Skill.Dealer
             throw new NotImplementedException();
         }
 
-        public override void SetTarget()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

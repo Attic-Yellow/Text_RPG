@@ -17,5 +17,6 @@ namespace Text_RPG.Skill.Common.Monster
         {
             throw new NotImplementedException();
         }
+
     }
 }

@@ -78,8 +78,8 @@ namespace Text_RPG.Battle
         }
         public void MonsterCommandSelect()
         {
-            List<Skill.Skill> usableSkills = new List<Skill.Skill>();
-            List<Skill.Skill> monsterPicks = new List<Skill.Skill>();
+            List<Skill.SingleSkill> usableSkills = new List<Skill.SingleSkill>();
+            List<Skill.SingleSkill> monsterPicks = new List<Skill.SingleSkill>();
             SkillCommand monsterSkill;
             for (int i = 0; i < 5; i++)
             {
