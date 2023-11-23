@@ -8,7 +8,7 @@ namespace Text_RPG.Entity.Character
 {
     public class Dealer : Character
     {
-        public Dealer()
+        public Dealer(Player owner) : base(owner)
         {
             level = 1;
             maxHp = 500;
@@ -18,10 +18,10 @@ namespace Text_RPG.Entity.Character
             critRate = 50;
             critPer = 30;
 
-            skillList.Add(new Skill.Dealer.AttackBuff());
-            skillList.Add(new Skill.Dealer.Counter());
-            skillList.Add(new Skill.Dealer.Evasion());
-            skillList.Add(new Skill.Dealer.ReduceArmor());
+            skillList.Add(new Skill.Dealer.AttackBuff(this));
+            skillList.Add(new Skill.Dealer.Counter(this));
+            skillList.Add(new Skill.Dealer.Evasion(this));
+            skillList.Add(new Skill.Dealer.ReduceArmor(this));
         }
         
         public override void LevelUp()

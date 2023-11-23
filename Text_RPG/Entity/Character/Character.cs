@@ -9,6 +9,7 @@ namespace Text_RPG.Entity.Character
 {
     public class Character : Entity
     {
+        public Player owner;
         public Data.PlayerClass playerClass { get; set; }
         public int level { get; set; }
         public int maxHp { get; set; }
@@ -18,10 +19,10 @@ namespace Text_RPG.Entity.Character
         public double critRate { get; set; }
         public double critPer { get; set; }
 
-        public List<Skill.Skill> skillList = new List<Skill.Skill>();
 
-        public Character()
+        public Character(Player owner)
         {
+            this.owner = owner; 
             Alive = true;
             skillList.Add(new Skill.Common.Attack(this));
             skillList.Add(new Skill.Common.HardAttack(this));

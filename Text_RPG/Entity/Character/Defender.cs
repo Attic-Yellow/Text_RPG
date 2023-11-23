@@ -9,7 +9,7 @@ namespace Text_RPG.Entity.Character
     public class Defender : Character
     {
       
-        public Defender()
+        public Defender(Player owner) : base(owner)
         {
             level = 1;
             maxHp = 840;
@@ -19,10 +19,10 @@ namespace Text_RPG.Entity.Character
             critRate = 40;
             critPer = 20;
 
-            skillList.Add(new Skill.Defender.CounterForAll());
-            skillList.Add(new Skill.Defender.DeffenseBuff());
-            skillList.Add(new Skill.Defender.Provoke());
-            skillList.Add(new Skill.Defender.Shield());
+            skillList.Add(new Skill.Defender.CounterForAll(this));
+            skillList.Add(new Skill.Defender.DeffenseBuff(this));
+            skillList.Add(new Skill.Defender.Provoke(this));
+            skillList.Add(new Skill.Defender.Shield(this));
         }
 
         public override void LevelUp()

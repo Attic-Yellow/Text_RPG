@@ -8,7 +8,7 @@ namespace Text_RPG.Entity.Character
 {
     public class Healer : Character
     {
-        public Healer()
+        public Healer(Player owner) : base(owner)
         {
             level = 1;
             maxHp = 500;
@@ -19,11 +19,10 @@ namespace Text_RPG.Entity.Character
             critPer = 20;
 
 
-            skillList.Add(new Skill.Healer.AttackBuffForAll());
-            skillList.Add(new Skill.Healer.Heal());
-            skillList.Add(new Skill.Healer.HealForAll());
-            skillList.Add(new Skill.Healer.ReduceAttack());
-            skillList.Add(new Skill.Healer.ShieldForAll());
+            skillList.Add(new Skill.Healer.Heal(this));
+            skillList.Add(new Skill.Healer.HealForAll(this));
+            skillList.Add(new Skill.Healer.ReduceAttack(this));
+            skillList.Add(new Skill.Healer.ShieldForAll(this));
         }
 
         public override void LevelUp()

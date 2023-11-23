@@ -9,7 +9,7 @@ namespace Text_RPG.Skill
 {
     public abstract class MultiSkill : Skill
     {
-        List<Entity.Entity> targetList;
+        public List<Entity.Entity> targets;
 
         protected MultiSkill(Entity.Entity owner) : base(owner)
         {
@@ -19,7 +19,7 @@ namespace Text_RPG.Skill
 
         public override void SetTarget()
         {
-            this.targetList = base.targetList[1];
+            targets = owner.targetList[0];
         }
     }
 }

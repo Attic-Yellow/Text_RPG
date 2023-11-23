@@ -8,6 +8,7 @@ namespace Text_RPG.Skill
 {
     public abstract class SingleSkill : Skill
     {
+        public Entity.Entity target;
         protected SingleSkill(Entity.Entity owner) : base(owner)
         {
         }

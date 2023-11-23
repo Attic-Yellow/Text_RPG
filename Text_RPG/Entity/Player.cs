@@ -10,7 +10,7 @@ using Text_RPG.Items;
 
 namespace Text_RPG.Entity
 {
-    public class Player : Entity
+    public class Player
     {
         // 캐릭터 3개
         public Character.Character[] characters;

@@ -13,17 +13,14 @@ namespace Text_RPG.Skill
 {
     public abstract class Skill : ITargetable, IExecutable
     {
-        public Player player;
         public Entity.Entity owner;
         public string name;
         public int priority;
         public int cooldown;
-        public List<List<Entity.Entity>> targetList;
 
         public Skill(Entity.Entity owner)
         {
             this.owner = owner;
-            this.targetList = owner.targetList;
         }
 
         public abstract void Execute();

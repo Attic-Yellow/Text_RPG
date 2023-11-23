@@ -6,11 +6,21 @@ using System.Threading.Tasks;
 
 namespace Text_RPG.Skill.Healer
 {
-    public class ReduceAttack : Skill
+    public class ReduceAttack : SingleSkill
     {
+        public ReduceAttack(Entity.Entity owner) : base(owner)
+        {
+        }
+
         public override void Execute()
         {
             throw new NotImplementedException();
+        }
+
+        public override void SetTarget()
+        {
+            target = owner.targetList[1][0];
+
         }
     }
 }

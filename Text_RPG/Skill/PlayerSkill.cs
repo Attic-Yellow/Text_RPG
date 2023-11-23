@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Text_RPG.Entity;
+using Text_RPG.Entity.Character;
 
 namespace Text_RPG.Skill
 {
@@ -16,7 +17,7 @@ namespace Text_RPG.Skill
 
         public override void SetTarget()
         {
-            this.target = (Player)base.targetList[0][0];
+            this.target = ((Character)owner.targetList[0][0]).owner;
         }
     }
 }

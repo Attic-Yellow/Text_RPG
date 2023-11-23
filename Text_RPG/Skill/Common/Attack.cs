@@ -10,7 +10,6 @@ namespace Text_RPG.Skill.Common
 {
     public class Attack : SingleSkill
     {
-        Entity.Entity target;
         public Attack(Entity.Entity owner) : base(owner)
         {
         }
@@ -24,7 +23,7 @@ namespace Text_RPG.Skill.Common
         {
             if (owner is Character)
             {
-                target = targetList[2][0];
+                target = owner.targetList[1][0];
             }
             else
             {
@@ -33,10 +32,10 @@ namespace Text_RPG.Skill.Common
                 while (true)
                 {
                     rndTarget = random.Next(0, 3);
-                    if (targetList[1][rndTarget].Alive)
+                    if (owner.targetList[0][rndTarget].Alive)
                         break;
                 }
-                target = targetList[1][rndTarget];
+                target = owner.targetList[0][rndTarget];
             }
         }
     }

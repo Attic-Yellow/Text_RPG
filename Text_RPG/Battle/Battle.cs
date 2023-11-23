@@ -27,29 +27,38 @@ namespace Text_RPG.Battle
     /// 10. 전투 종료
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class Battle<T> where T : Monster
+    public class Battle
     {
         public Player player;  // Player로 변할 수도 있음.
-        public T monster;
+        public Monster monster;
+        public List<List<Entity.Entity>> targetList = new List<List<Entity.Entity>>();
         public int turn;
         public CommandManager commandManager = new CommandManager();
         bool OnBattle;  // charcter 전멸 혹은 monster 죽음
         public Random random = new Random();
-        public Text_RPG.Battle.Battle<T> battle;
         int alive = 3;
 
-        public Battle(Player player, T monster)
+        public Battle(Player player, Monster monster)
         {
             this.player = player;
             this.monster = monster;
+            List<Entity.Entity> characterList = new List<Entity.Entity>();
+            characterList.Add(player.characters[0]);
+            characterList.Add(player.characters[1]);
+            characterList.Add(player.characters[2]);
+            List<Entity.Entity> monsterList = new List<Entity.Entity>();
+            monsterList.Add(monster);
+            player.characters[0].targetList = this.targetList;
+            player.characters[1].targetList = this.targetList;
+            player.characters[2].targetList = this.targetList;
+            monster.targetList = this.targetList;
             turn = 0;
             bool OnBattle = true;
         }
 
    
-        public void StartBattle(Player player, T monster)
+        public void StartBattle()
         {
-            battle = new Battle<T>(player, monster);
             // 전투창 출력
             while (OnBattle)
             {
@@ -149,7 +158,8 @@ namespace Text_RPG.Battle
                     // 명령 선택 : 공격 "A"
                     case "a":
                     case "A":
-                        commandManager.AddCommand(new AttackCommand(selected,monster), Array.IndexOf(player.characters, selected));
+                        selected.skillList[0].SetTarget();
+                        commandManager.AddCommand(new AttackCommand(selected), Array.IndexOf(player.characters, selected));
                         break;
 
                     // 명령 선택 : 스킬 "S" -> "QWERT"
@@ -159,42 +169,59 @@ namespace Text_RPG.Battle
                         {
                             case "q":
                             case "Q":
-
+                                selected.skillList[1].SetTarget();
+                                commandManager.AddCommand(new SkillCommand(selected,selected.skillList[1]), Array.IndexOf(player.characters, selected));
+                                break;
                             case "w":
                             case "W":
-
+                                selected.skillList[2].SetTarget();
+                                commandManager.AddCommand(new SkillCommand(selected, selected.skillList[2]), Array.IndexOf(player.characters, selected));
+                                break;
                             case "e":
-                            case "e":
-
+                            case "E":
+                                selected.skillList[3].SetTarget();
+                                commandManager.AddCommand(new SkillCommand(selected, selected.skillList[3]), Array.IndexOf(player.characters, selected));
+                                break;
                             case "r":
                             case "R":
-
+                                selected.skillList[4].SetTarget();
+                                commandManager.AddCommand(new SkillCommand(selected, selected.skillList[4]), Array.IndexOf(player.characters, selected));
+                                break;
                             case "t":
                             case "T":
-
+                                selected.skillList[5].SetTarget();
+                                commandManager.AddCommand(new SkillCommand(selected, selected.skillList[5]), Array.IndexOf(player.characters, selected));
+                                break;
                             case "s":
                             case "S":
+                                break;
                         }
                         break;
 
                     // 명령 선택 : 인벤토리 "I"
                     case "i":
                     case "I":
+                        break;
 
                     // 명령 선택 : 대기 "H"
                     case "h":
                     case "H":
+                        commandManager.AddCommand(new NullCommand(selected), Array.IndexOf(player.characters, selected));
+                        break;
 
                     // 명령 선택 : 도망가기 "P" 
                     // 가능하면 ESC로 하고 싶음
                     case "p":
                     case "P":
+                        break;
 
                     // 명령 선택 : 확정 "F" 
                     // 가능하면 SPACE로 하고 싶음
                     case "f":
                     case "F":
-                    
+                        break;
+                    default:
+                        continue;
                 }
 
             }
@@ -204,30 +231,6 @@ namespace Text_RPG.Battle
         {
             return Console.ReadLine();
         }
-
-        public void SetTarget(Skill.Skill skill)
-        {
-            skill.SetTarget();
-        }
-
-        public Character ChooseTarget()
-        {
-            switch (Input())
-            {
-                case "1":
-                    return player.characters[0];
-                    break;
-                case "2":
-                    return player.characters[1];
-                    break;
-                case "3":
-                    return player.characters[2];
-                    break;
-                default:
-                    return player.characters[0];
-            }
-        }
-
         public void CommandSort()
         {
             commandManager.SortCommands();

@@ -11,7 +11,7 @@ namespace Text_RPG.Entity.Monster
         public Goblin()
         {
             // stats
-            skillList.Add(new Skill.Goblin.StealMoney());
+            skillList.Add(new Skill.Goblin.StealMoney(this));
         }
 
     }

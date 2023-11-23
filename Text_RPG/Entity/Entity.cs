@@ -12,6 +12,18 @@ namespace Text_RPG.Entity
         public bool Alive { get; set; }
 
         public List<List<Entity>> targetList;
+        public List<Skill.Skill> skillList = new List<Skill.Skill>();
+
+        public void TakeHit(int damage)
+        {
+
+        }
+
+        public void TakeHeal(int amount)
+        {
+
+        }
+
     }
 
 }
